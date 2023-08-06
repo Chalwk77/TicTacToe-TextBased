@@ -1,10 +1,25 @@
 /*
 
- - | - | -
----+---+---
- - | - | -
----+---+---
- - | - | -
+// COMING IN A FUTURE UPDATE:
+// Multi-dimensional tic tac toe game - you have to win each board to place your mark.
+
+ - | - | -      - | - | -      - | - | -
+---+---+---    ---+---+---     ---+---+---
+ - | X | -      - | - | -      - | - | -
+---+---+---    ---+---+---     ---+---+---
+ - | - | -      - | - | -      - | - | -
+
+ - | - | -      - | - | -      - | - | -
+---+---+---    ---+---+---     ---+---+---
+ - | - | -      - | X | -      - | - | -
+---+---+---    ---+---+---     ---+---+---
+ - | - | -      - | - | -      - | - | -
+
+ - | - | -      - | - | -      - | - | -
+---+---+---    ---+---+---     ---+---+---
+ - | - | -      - | - | -      - | X | -
+---+---+---    ---+---+---     ---+---+---
+ - | - | -      - | - | -      - | - | -
 
 */
 
@@ -221,7 +236,7 @@ public class Main {
         return false;
     }
 
-    private static boolean checkMove(char[][] board, String input) {
+    private static boolean moveAllowed(char[][] board, String input) {
 
         for (Map.Entry<String, int[]> entry : map.entrySet()) {
             String pos = entry.getKey();
@@ -240,13 +255,16 @@ public class Main {
         Random rand = new Random();
         String computerMove;
         do {
-
+            
             int LEN = board.length;
-            String letter = positions[LEN - 1][rand.nextInt(LEN)];
-            int num = rand.nextInt(LEN) + 1;
-            computerMove = letter + num;
+            switch (LEN) {
+                case 3 -> computerMove = positions[0][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 4 -> computerMove = positions[1][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 5 -> computerMove = positions[2][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                default -> throw new IllegalStateException("Unexpected value: " + LEN);
+            }
 
-        } while (!checkMove(board, computerMove));
+        } while (!moveAllowed(board, computerMove));
         header = "Computer chose " + computerMove;
         placeMove(board, computerMove, player2);
     }
@@ -256,7 +274,7 @@ public class Main {
         String userInput;
         while (true) {
             userInput = scanner.nextLine();
-            if (checkMove(board, userInput)) {
+            if (moveAllowed(board, userInput)) {
                 break;
             } else {
                 print(userInput + " is not a valid move.");
