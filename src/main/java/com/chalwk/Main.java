@@ -49,15 +49,12 @@ public class Main {
     public static void main(String[] args) {
 
         map = new HashMap<>();
-        String input = "C2"; // should be array index 0,2
-        // The user input (A1, A2, A3, B1, B2, B3, C1, C2, C3)
-        // needs to be translated to the array index.
-        // For example, C2 should be array index 0,2.
-        // The loop needs to be adjusted slightly to accommodate this.
-        for (int col = 0; col < 3; col++) {
-            for (int row = 0; row < 3; row++) {
-                String pos = positions[col] + (row + 1);
-                map.put(pos, new int[]{col, row});
+        String input = "B3"; // should be array index 0,2
+
+        for (int i = 0; i < positions.length; i++) {
+            String pos = positions[i];
+            for (int j = 0; j < positions.length; j++) {
+                map.put(pos + (j + 1), new int[]{j, i});
             }
         }
 
