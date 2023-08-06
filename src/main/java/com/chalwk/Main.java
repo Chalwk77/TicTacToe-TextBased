@@ -54,16 +54,17 @@ public class Main {
     public static void main(String[] args) {
 
         // TEST FOR FUTURE UPDATE:
+        // 3x3
         map = new HashMap<>();
 
     /*
-          --A---B---C--
-        1 | - | - | - |
-          |---+---+---|
-        2 | - | - | - |
-          |---+---+---|
-        3 | - | - | - |
-          |-----------|
+              --A---B---C--
+            1 | - | - | - |
+              |---+---+---|
+            2 | - | - | - |
+              |---+---+---|
+            3 | - | - | - |
+              |-----------|
     */
 
         char[][] BOARD = {
@@ -78,7 +79,6 @@ public class Main {
             }
         }
         System.out.println(map);
-
 
 
         Scanner scanner = new Scanner(System.in);
@@ -96,9 +96,13 @@ public class Main {
             }
             board = boards[userInput - 1];
 
-            for (int i = 0; i < board.length; i++) {
-                map.put(i, columns[i % 3] + rows[i / 3]);
+            // FOR 3x3 BOARD:
+            for (int row = 0; row < board.length; row++) {
+                for (int pos = 0; pos < board[row].length; pos++) {
+                    map.put(row * 3 + pos, columns[pos] + rows[row]);
+                }
             }
+            System.out.println(map);
 
             break;
         }
