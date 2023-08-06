@@ -51,6 +51,23 @@ public class Main {
             {"A", "B", "C", "D", "E"}
     };
 
+    static int[][][] WINNING_COMBINATIONS = {
+            // 3x3:
+            {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // rows
+                    {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // columns
+                    {0, 4, 8}, {2, 4, 6}}, // diagonals
+
+            //4x4:
+            {{0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}, {12, 13, 14, 15}, // rows
+                    {0, 4, 8, 12}, {1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, // columns
+                    {0, 5, 10, 15}, {3, 6, 9, 12}}, // diagonals
+
+            //5x5:
+            {{0, 1, 2, 3, 4}, {5, 6, 7, 8, 9}, {10, 11, 12, 13, 14}, {15, 16, 17, 18, 19}, {20, 21, 22, 23, 24}, // rows
+                    {0, 5, 10, 15, 20}, {1, 6, 11, 16, 21}, {2, 7, 12, 17, 22}, {3, 8, 13, 18, 23}, {4, 9, 14, 19, 24}, // columns
+                    {0, 6, 12, 18, 24}, {4, 8, 12, 16, 20}} // diagonals
+    };
+
     public static void main(String[] args) {
 
         char[][] board;
@@ -156,45 +173,48 @@ public class Main {
 
     private static boolean getWinner(char[][] board, char symbol) {
 
-        // Easier, cleaner way to do this:
         switch (board.length) {
             case 3 -> {
-
-            }
-        }
-
-        switch (board.length) {
-            case 3 -> {
-                return (board[0][0] == symbol && board[0][1] == symbol && board[0][2] == symbol) ||
-                        (board[1][0] == symbol && board[1][1] == symbol && board[1][2] == symbol) ||
-                        (board[2][0] == symbol && board[2][1] == symbol && board[2][2] == symbol) ||
-                        (board[0][0] == symbol && board[1][0] == symbol && board[2][0] == symbol) ||
-                        (board[0][1] == symbol && board[1][1] == symbol && board[2][1] == symbol) ||
-                        (board[0][2] == symbol && board[1][2] == symbol && board[2][2] == symbol) ||
-                        (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol) ||
-                        (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol);
+                for (int[] combination : WINNING_COMBINATIONS[0]) {
+                    int x = combination[0];
+                    int y = combination[1];
+                    int z = combination[2];
+                    if (board[x / 3][x % 3] == symbol
+                            && board[y / 3][y % 3] == symbol
+                            && board[z / 3][z % 3] == symbol) {
+                        return true;
+                    }
+                }
             }
             case 4 -> {
-                return (board[0][0] == symbol && board[0][1] == symbol && board[0][2] == symbol && board[0][3] == symbol) ||
-                        (board[1][0] == symbol && board[1][1] == symbol && board[1][2] == symbol && board[1][3] == symbol) ||
-                        (board[2][0] == symbol && board[2][1] == symbol && board[2][2] == symbol && board[2][3] == symbol) ||
-                        (board[3][0] == symbol && board[3][1] == symbol && board[3][2] == symbol && board[3][3] == symbol) ||
-                        (board[0][0] == symbol && board[1][0] == symbol && board[2][0] == symbol && board[3][0] == symbol) ||
-                        (board[0][1] == symbol && board[1][1] == symbol && board[2][1] == symbol && board[3][1] == symbol);
+                for (int[] combination : WINNING_COMBINATIONS[1]) {
+                    int x = combination[0];
+                    int y = combination[1];
+                    int z = combination[2];
+                    int w = combination[3];
+                    if (board[x / 4][x % 4] == symbol
+                            && board[y / 4][y % 4] == symbol
+                            && board[z / 4][z % 4] == symbol
+                            && board[w / 4][w % 4] == symbol) {
+                        return true;
+                    }
+                }
             }
             case 5 -> {
-                return (board[0][0] == symbol && board[0][1] == symbol && board[0][2] == symbol && board[0][3] == symbol && board[0][4] == symbol) ||
-                        (board[1][0] == symbol && board[1][1] == symbol && board[1][2] == symbol && board[1][3] == symbol && board[1][4] == symbol) ||
-                        (board[2][0] == symbol && board[2][1] == symbol && board[2][2] == symbol && board[2][3] == symbol && board[2][4] == symbol) ||
-                        (board[3][0] == symbol && board[3][1] == symbol && board[3][2] == symbol && board[3][3] == symbol && board[3][4] == symbol) ||
-                        (board[4][0] == symbol && board[4][1] == symbol && board[4][2] == symbol && board[4][3] == symbol && board[4][4] == symbol) ||
-                        (board[0][0] == symbol && board[1][0] == symbol && board[2][0] == symbol && board[3][0] == symbol && board[4][0] == symbol) ||
-                        (board[0][1] == symbol && board[1][1] == symbol && board[2][1] == symbol && board[3][1] == symbol && board[4][1] == symbol) ||
-                        (board[0][2] == symbol && board[1][2] == symbol && board[2][2] == symbol && board[3][2] == symbol && board[4][2] == symbol) ||
-                        (board[0][3] == symbol && board[1][3] == symbol && board[2][3] == symbol && board[3][3] == symbol && board[4][3] == symbol) ||
-                        (board[0][4] == symbol && board[1][4] == symbol && board[2][4] == symbol && board[3][4] == symbol && board[4][4] == symbol) ||
-                        (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol && board[3][3] == symbol && board[4][4] == symbol) ||
-                        (board[0][4] == symbol && board[1][3] == symbol && board[2][2] == symbol && board[3][1] == symbol && board[4][0] == symbol);
+                for (int[] combination : WINNING_COMBINATIONS[2]) {
+                    int x = combination[0];
+                    int y = combination[1];
+                    int z = combination[2];
+                    int w = combination[3];
+                    int v = combination[4];
+                    if (board[x / 5][x % 5] == symbol
+                            && board[y / 5][y % 5] == symbol
+                            && board[z / 5][z % 5] == symbol
+                            && board[w / 5][w % 5] == symbol
+                            && board[v / 5][v % 5] == symbol) {
+                        return true;
+                    }
+                }
             }
         }
 
