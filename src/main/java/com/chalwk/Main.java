@@ -55,20 +55,22 @@ public class Main {
 
         map = new HashMap<>();
 
-        for (int i = 0; i < columns.length; i++) {
-            String column = columns[i];
-            map.put(i, column);
-        }
-        for (int i = 0; i < rows.length; i++) {
-            String row = rows[i];
-            map.put(i + columns.length, row);
+        // TEST FOR A FUTURE UPDATE:
+        String row = "A";
+        String column = "1";
+
+        for (int i = 0; i < boards[0].length; i++) {
+            for (int j = 0; j < boards[0][i].length; j++) {
+                map.put(i * boards[0].length + j + 1, row + column);
+                column = String.valueOf(Integer.parseInt(column) + 1);
+            }
+            column = "1";
+            row = String.valueOf((char) (row.charAt(0) + 1));
         }
 
-        String input = "C3";
-
-        for (int i = 0; i < map.size(); i++) {
-            String value = map.get(i);
-            System.out.println(i + " = " + value);
+        // TEST:
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
         }
 
 
