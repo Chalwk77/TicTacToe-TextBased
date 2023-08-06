@@ -221,7 +221,7 @@ public class Main {
         return false;
     }
 
-    private static boolean isValidMove(char[][] board, String input) {
+    private static boolean checkMove(char[][] board, String input) {
 
         for (Map.Entry<String, int[]> entry : map.entrySet()) {
             String pos = entry.getKey();
@@ -246,7 +246,7 @@ public class Main {
             int num = rand.nextInt(LEN) + 1;
             computerMove = letter + num;
 
-        } while (!isValidMove(board, computerMove));
+        } while (!checkMove(board, computerMove));
         header = "Computer chose " + computerMove;
         placeMove(board, computerMove, player2);
     }
@@ -256,7 +256,7 @@ public class Main {
         String userInput;
         while (true) {
             userInput = scanner.nextLine();
-            if (isValidMove(board, userInput)) {
+            if (checkMove(board, userInput)) {
                 break;
             } else {
                 print(userInput + " is not a valid move.");
