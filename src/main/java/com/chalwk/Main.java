@@ -10,15 +10,9 @@
 
 package com.chalwk;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-
-    private final static String[] columns = {"A", "B", "C"};
-    private final static int[] rows = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     public static String header = "";
     static char player1 = 'X';
     static char player2 = 'O';
@@ -49,37 +43,23 @@ public class Main {
                     {empty, empty, empty, empty, empty}
             }
     };
-    static Map<Integer, String> map;
+    static Map<String, int[]> map;
+    static String[] positions = {"A", "B", "C"};
 
     public static void main(String[] args) {
 
-        // TEST FOR FUTURE UPDATE:
-        // 3x3
         map = new HashMap<>();
-
-    /*
-              --A---B---C--
-            1 | - | - | - |
-              |---+---+---|
-            2 | - | - | - |
-              |---+---+---|
-            3 | - | - | - |
-              |-----------|
-    */
-
-        char[][] BOARD = {
-                {' ', ' ', ' '},
-                {' ', ' ', ' '},
-                {' ', ' ', ' '},
-        };
-
-        for (int row = 0; row < BOARD.length; row++) {
-            for (int pos = 0; pos < BOARD[row].length; pos++) {
-                map.put(row * 3 + pos, columns[pos] + rows[row]);
+        String input = "C2"; // should be array index 0,2
+        // The user input (A1, A2, A3, B1, B2, B3, C1, C2, C3)
+        // needs to be translated to the array index.
+        // For example, C2 should be array index 0,2.
+        // The loop needs to be adjusted slightly to accommodate this.
+        for (int col = 0; col < 3; col++) {
+            for (int row = 0; row < 3; row++) {
+                String pos = positions[col] + (row + 1);
+                map.put(pos, new int[]{col, row});
             }
         }
-        System.out.println(map);
-
 
         Scanner scanner = new Scanner(System.in);
 
@@ -96,13 +76,15 @@ public class Main {
             }
             board = boards[userInput - 1];
 
-            // FOR 3x3 BOARD:
-            for (int row = 0; row < board.length; row++) {
-                for (int pos = 0; pos < board[row].length; pos++) {
-                    map.put(row * 3 + pos, columns[pos] + rows[row]);
+            for (Map.Entry<String, int[]> entry : map.entrySet()) {
+                String pos = entry.getKey();
+                if (input.equalsIgnoreCase(pos)) {
+                    int[] rowCol = entry.getValue();
+                    int row = rowCol[0];
+                    int col = rowCol[1];
+                    board[row][col] = 'X';
                 }
             }
-            System.out.println(map);
 
             break;
         }
@@ -298,11 +280,11 @@ public class Main {
         placeMove(board, userInput, player1);
     }
 
-    private static void placeMove(char[][] board, String position, char symbol) {
-
+    private static void placeMove(char[][] board, String input, char symbol) {
         switch (board.length) {
+
             case 3 -> {
-                switch (position) {
+                switch (input) {
                     case "1" -> board[0][0] = symbol;
                     case "2" -> board[0][1] = symbol;
                     case "3" -> board[0][2] = symbol;
@@ -316,7 +298,7 @@ public class Main {
                 }
             }
             case 4 -> {
-                switch (position) {
+                switch (input) {
                     case "1" -> board[0][0] = symbol;
                     case "2" -> board[0][1] = symbol;
                     case "3" -> board[0][2] = symbol;
@@ -337,7 +319,7 @@ public class Main {
                 }
             }
             case 5 -> {
-                switch (position) {
+                switch (input) {
                     case "1" -> board[0][0] = symbol;
                     case "2" -> board[0][1] = symbol;
                     case "3" -> board[0][2] = symbol;
