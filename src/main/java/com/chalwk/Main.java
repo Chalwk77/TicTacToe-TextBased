@@ -116,13 +116,13 @@ public class Main {
         while (true) {
 
             playerTurn(board, scanner);
-            if (isGameFinished(board)) {
+            if (gameOver(board)) {
                 break;
             }
             printBoard(board, true);
 
             computerTurn(board);
-            if (isGameFinished(board)) {
+            if (gameOver(board)) {
                 break;
             }
             printBoard(board, true);
@@ -149,7 +149,7 @@ public class Main {
         }
     }
 
-    private static boolean isGameFinished(char[][] board) {
+    private static boolean gameOver(char[][] board) {
 
         if (getWinner(board, player1)) {
             showStatus(1);
