@@ -17,8 +17,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    private final static String[] columns = {"A", "B", "C", "D", "E"};
-    private final static String[] rows = {"1", "2", "3", "4", "5"};
+    private final static String[] columns = {"A", "B", "C"};
+    private final static int[] rows = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     public static String header = "";
     static char player1 = 'X';
     static char player2 = 'O';
@@ -53,25 +53,32 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // TEST FOR FUTURE UPDATE:
         map = new HashMap<>();
 
-        // TEST FOR A FUTURE UPDATE:
-        String row = "A";
-        String column = "1";
+    /*
+          --A---B---C--
+        1 | - | - | - |
+          |---+---+---|
+        2 | - | - | - |
+          |---+---+---|
+        3 | - | - | - |
+          |-----------|
+    */
 
-        for (int i = 0; i < boards[0].length; i++) {
-            for (int j = 0; j < boards[0][i].length; j++) {
-                map.put(i * boards[0].length + j + 1, row + column);
-                column = String.valueOf(Integer.parseInt(column) + 1);
+        char[][] BOARD = {
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+        };
+
+        for (int row = 0; row < BOARD.length; row++) {
+            for (int pos = 0; pos < BOARD[row].length; pos++) {
+                map.put(row * 3 + pos, columns[pos] + rows[row]);
             }
-            column = "1";
-            row = String.valueOf((char) (row.charAt(0) + 1));
         }
+        System.out.println(map);
 
-        // TEST:
-        for (Map.Entry<Integer, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " " + entry.getValue());
-        }
 
 
         Scanner scanner = new Scanner(System.in);
@@ -88,6 +95,11 @@ public class Main {
                 continue;
             }
             board = boards[userInput - 1];
+
+            for (int i = 0; i < board.length; i++) {
+                map.put(i, columns[i % 3] + rows[i / 3]);
+            }
+
             break;
         }
 
