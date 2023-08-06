@@ -43,27 +43,37 @@ public class Main {
                     {empty, empty, empty, empty, empty}
             }
     };
+
     static Map<String, int[]> map;
-    static String[] positions = {"A", "B", "C"};
+    static String[][] positions = {
+            {"A", "B", "C"},
+            {"A", "B", "C", "D"},
+            {"A", "B", "C", "D", "E"}
+    };
 
     public static void main(String[] args) {
 
+        char[][] board;
         map = new HashMap<>();
-        String input = "B3"; // should be array index 0,2
-
-        for (int i = 0; i < positions.length; i++) {
-            String pos = positions[i];
-            for (int j = 0; j < positions.length; j++) {
-                map.put(pos + (j + 1), new int[]{j, i});
-            }
-        }
 
         Scanner scanner = new Scanner(System.in);
 
-        char[][] board;
-
         showStatus(0);
+        board = pickABoard(scanner);
+
+        scanner = new Scanner(System.in);
+
+        printBoard(board, false);
+        gameLoop(board, scanner);
+        playAgain(scanner);
+
+        scanner.close();
+    }
+
+    private static char[][] pickABoard(Scanner scanner) {
+
         print("Pick a board size: 3x3, 4x4, 5x5 (1, 2, 3 respectively)");
+        char[][] board;
         while (true) {
 
             int userInput = scanner.nextInt();
@@ -73,23 +83,19 @@ public class Main {
             }
             board = boards[userInput - 1];
 
-            for (Map.Entry<String, int[]> entry : map.entrySet()) {
-                String pos = entry.getKey();
-                if (input.equalsIgnoreCase(pos)) {
-                    int[] rowCol = entry.getValue();
-                    int row = rowCol[0];
-                    int col = rowCol[1];
-                    board[row][col] = 'X';
+            for (int i = 0; i < board.length; i++) {
+                String pos = positions[userInput - 1][i];
+                for (int j = 0; j < board.length; j++) {
+                    map.put(pos + (j + 1), new int[]{j, i});
                 }
             }
 
             break;
         }
+        return board;
+    }
 
-        scanner = new Scanner(System.in);
-
-        printBoard(board, false);
-
+    private static void gameLoop(char[][] board, Scanner scanner) {
         while (true) {
 
             playerTurn(board, scanner);
@@ -104,7 +110,9 @@ public class Main {
             }
             printBoard(board, true);
         }
+    }
 
+    private static void playAgain(Scanner scanner) {
         while (true) {
 
             print("Play again? (Y/N)");
@@ -122,8 +130,6 @@ public class Main {
                 print("Invalid input");
             }
         }
-
-        scanner.close();
     }
 
     private static boolean isGameFinished(char[][] board) {
@@ -149,6 +155,13 @@ public class Main {
     }
 
     private static boolean getWinner(char[][] board, char symbol) {
+
+        // Easier, cleaner way to do this:
+        switch (board.length) {
+            case 3 -> {
+
+            }
+        }
 
         switch (board.length) {
             case 3 -> {
@@ -188,65 +201,15 @@ public class Main {
         return false;
     }
 
-    private static boolean isValidMove(char[][] board, String pos) {
+    private static boolean isValidMove(char[][] board, String input) {
 
-        switch (board.length) {
-            case 3 -> {
-
-                return (pos.equals("1") && board[0][0] == empty) ||
-                        (pos.equals("2") && board[0][1] == empty) ||
-                        (pos.equals("3") && board[0][2] == empty) ||
-                        (pos.equals("4") && board[1][0] == empty) ||
-                        (pos.equals("5") && board[1][1] == empty) ||
-                        (pos.equals("6") && board[1][2] == empty) ||
-                        (pos.equals("7") && board[2][0] == empty) ||
-                        (pos.equals("8") && board[2][1] == empty) ||
-                        (pos.equals("9") && board[2][2] == empty);
-            }
-            case 4 -> {
-                return (pos.equals("1") && board[0][0] == empty) ||
-                        (pos.equals("2") && board[0][1] == empty) ||
-                        (pos.equals("3") && board[0][2] == empty) ||
-                        (pos.equals("4") && board[0][3] == empty) ||
-                        (pos.equals("5") && board[1][0] == empty) ||
-                        (pos.equals("6") && board[1][1] == empty) ||
-                        (pos.equals("7") && board[1][2] == empty) ||
-                        (pos.equals("8") && board[1][3] == empty) ||
-                        (pos.equals("9") && board[2][0] == empty) ||
-                        (pos.equals("10") && board[2][1] == empty) ||
-                        (pos.equals("11") && board[2][2] == empty) ||
-                        (pos.equals("12") && board[2][3] == empty) ||
-                        (pos.equals("13") && board[3][0] == empty) ||
-                        (pos.equals("14") && board[3][1] == empty) ||
-                        (pos.equals("15") && board[3][2] == empty) ||
-                        (pos.equals("16") && board[3][3] == empty);
-            }
-            case 5 -> {
-                return (pos.equals("1") && board[0][0] == empty) ||
-                        (pos.equals("2") && board[0][1] == empty) ||
-                        (pos.equals("3") && board[0][2] == empty) ||
-                        (pos.equals("4") && board[0][3] == empty) ||
-                        (pos.equals("5") && board[0][4] == empty) ||
-                        (pos.equals("6") && board[1][0] == empty) ||
-                        (pos.equals("7") && board[1][1] == empty) ||
-                        (pos.equals("8") && board[1][2] == empty) ||
-                        (pos.equals("9") && board[1][3] == empty) ||
-                        (pos.equals("10") && board[1][4] == empty) ||
-                        (pos.equals("11") && board[2][0] == empty) ||
-                        (pos.equals("12") && board[2][1] == empty) ||
-                        (pos.equals("13") && board[2][2] == empty) ||
-                        (pos.equals("14") && board[2][3] == empty) ||
-                        (pos.equals("15") && board[2][4] == empty) ||
-                        (pos.equals("16") && board[3][0] == empty) ||
-                        (pos.equals("17") && board[3][1] == empty) ||
-                        (pos.equals("18") && board[3][2] == empty) ||
-                        (pos.equals("19") && board[3][3] == empty) ||
-                        (pos.equals("20") && board[3][4] == empty) ||
-                        (pos.equals("21") && board[4][0] == empty) ||
-                        (pos.equals("22") && board[4][1] == empty) ||
-                        (pos.equals("23") && board[4][2] == empty) ||
-                        (pos.equals("24") && board[4][3] == empty) ||
-                        (pos.equals("25") && board[4][4] == empty);
+        for (Map.Entry<String, int[]> entry : map.entrySet()) {
+            String pos = entry.getKey();
+            if (input.equalsIgnoreCase(pos)) {
+                int[] rowCol = entry.getValue();
+                int row = rowCol[0];
+                int col = rowCol[1];
+                return board[row][col] == empty;
             }
         }
 
@@ -255,12 +218,17 @@ public class Main {
 
     private static void computerTurn(char[][] board) {
         Random rand = new Random();
-        int computerMove;
+        String computerMove;
         do {
-            computerMove = rand.nextInt(9) + 1;
-        } while (!isValidMove(board, Integer.toString(computerMove)));
+
+            int LEN = board.length;
+            String letter = positions[LEN - 1][rand.nextInt(LEN)];
+            int num = rand.nextInt(LEN) + 1;
+            computerMove = letter + num;
+
+        } while (!isValidMove(board, computerMove));
         header = "Computer chose " + computerMove;
-        placeMove(board, Integer.toString(computerMove), player2);
+        placeMove(board, computerMove, player2);
     }
 
     private static void playerTurn(char[][] board, Scanner scanner) {
@@ -278,74 +246,19 @@ public class Main {
     }
 
     private static void placeMove(char[][] board, String input, char symbol) {
-        switch (board.length) {
 
-            case 3 -> {
-                switch (input) {
-                    case "1" -> board[0][0] = symbol;
-                    case "2" -> board[0][1] = symbol;
-                    case "3" -> board[0][2] = symbol;
-                    case "4" -> board[1][0] = symbol;
-                    case "5" -> board[1][1] = symbol;
-                    case "6" -> board[1][2] = symbol;
-                    case "7" -> board[2][0] = symbol;
-                    case "8" -> board[2][1] = symbol;
-                    case "9" -> board[2][2] = symbol;
-                    default -> print("Invalid input");
-                }
-            }
-            case 4 -> {
-                switch (input) {
-                    case "1" -> board[0][0] = symbol;
-                    case "2" -> board[0][1] = symbol;
-                    case "3" -> board[0][2] = symbol;
-                    case "4" -> board[0][3] = symbol;
-                    case "5" -> board[1][0] = symbol;
-                    case "6" -> board[1][1] = symbol;
-                    case "7" -> board[1][2] = symbol;
-                    case "8" -> board[1][3] = symbol;
-                    case "9" -> board[2][0] = symbol;
-                    case "10" -> board[2][1] = symbol;
-                    case "11" -> board[2][2] = symbol;
-                    case "12" -> board[2][3] = symbol;
-                    case "13" -> board[3][0] = symbol;
-                    case "14" -> board[3][1] = symbol;
-                    case "15" -> board[3][2] = symbol;
-                    case "16" -> board[3][3] = symbol;
-                    default -> print("Invalid input");
-                }
-            }
-            case 5 -> {
-                switch (input) {
-                    case "1" -> board[0][0] = symbol;
-                    case "2" -> board[0][1] = symbol;
-                    case "3" -> board[0][2] = symbol;
-                    case "4" -> board[0][3] = symbol;
-                    case "5" -> board[0][4] = symbol;
-                    case "6" -> board[1][0] = symbol;
-                    case "7" -> board[1][1] = symbol;
-                    case "8" -> board[1][2] = symbol;
-                    case "9" -> board[1][3] = symbol;
-                    case "10" -> board[1][4] = symbol;
-                    case "11" -> board[2][0] = symbol;
-                    case "12" -> board[2][1] = symbol;
-                    case "13" -> board[2][2] = symbol;
-                    case "14" -> board[2][3] = symbol;
-                    case "15" -> board[2][4] = symbol;
-                    case "16" -> board[3][0] = symbol;
-                    case "17" -> board[3][1] = symbol;
-                    case "18" -> board[3][2] = symbol;
-                    case "19" -> board[3][3] = symbol;
-                    case "20" -> board[3][4] = symbol;
-                    case "21" -> board[4][0] = symbol;
-                    case "22" -> board[4][1] = symbol;
-                    case "23" -> board[4][2] = symbol;
-                    case "24" -> board[4][3] = symbol;
-                    case "25" -> board[4][4] = symbol;
-                    default -> print("Invalid input");
-                }
+        for (Map.Entry<String, int[]> entry : map.entrySet()) {
+            String pos = entry.getKey();
+            if (input.equalsIgnoreCase(pos)) {
+                int[] rowCol = entry.getValue();
+                int row = rowCol[0];
+                int col = rowCol[1];
+                board[row][col] = symbol;
+                break;
             }
         }
+
+        print("Invalid input");
     }
 
     private static void printBoard(char[][] board, boolean clear) {
@@ -393,17 +306,16 @@ public class Main {
 
         StringBuilder available = new StringBuilder("Make your move: ");
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] == empty) {
-                    if (i == board.length - 1 && j == board[i].length - 1) {
-                        available.append((i * board.length + j + 1));
-                        break;
-                    }
-                    available.append((i * board.length + j + 1)).append(", ");
-                }
+        for (Map.Entry<String, int[]> entry : map.entrySet()) {
+            String pos = entry.getKey();
+            int[] rowCol = entry.getValue();
+            int row = rowCol[0];
+            int col = rowCol[1];
+            if (board[row][col] == empty) {
+                available.append(pos).append(", ");
             }
         }
+
         System.out.println(header);
         System.out.println(available);
     }
