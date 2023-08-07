@@ -53,12 +53,10 @@ public class BoardPicker {
                     "Y", "Z"
             }, 0, board.length);
 
-            // Show cell indicators (1,2,3 etc. & A,B,C etc.):
+            // Create cell indicators (1,2,3 etc. & A,B,C etc.):
             for (int i = 0; i < board.length; i++) {
                 String letter = letters[i];
-                for (int j = 0; j < board.length; j++) {
-                    cell_indicators.put(letter + (j + 1), new int[]{j, i});
-                }
+                cell_indicators.put(letter + (i + 1), new int[]{i, i});
             }
 
             break;
