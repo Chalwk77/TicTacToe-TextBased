@@ -24,88 +24,6 @@ public class Variables {
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"},
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"}
     };
-    public static void resetBoards(){
-
-        boards = new char[][][]{
-
-                //2x2:
-                {
-                        {empty, empty},
-                        {empty, empty}
-                },
-
-                // 3x3
-                {
-                        {empty, empty, empty},
-                        {empty, empty, empty},
-                        {empty, empty, empty}
-                },
-
-                // 4x4
-                {
-                        {empty, empty, empty, empty},
-                        {empty, empty, empty, empty},
-                        {empty, empty, empty, empty},
-                        {empty, empty, empty, empty}
-                },
-
-                // 5x5
-                {
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty}
-                },
-
-                // 6x6
-                {
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                },
-
-                //7x7
-                {
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                },
-
-                //8x8
-                {
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                },
-
-                //9x9
-                {
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                }
-        };
-    }
-
     public static int[][][] WINNING_COMBINATIONS = {
 
             // 2x2:
@@ -197,4 +115,86 @@ public class Variables {
                     {0, 10, 20, 30, 40, 50, 60, 70, 80}, {8, 16, 24, 32, 40, 48, 56, 64, 72} // diagonals
             }
     };
+
+    public static void resetBoards() {
+
+        boards = new char[][][]{
+
+                //2x2:
+                {
+                        {empty, empty},
+                        {empty, empty}
+                },
+
+                // 3x3
+                {
+                        {empty, empty, empty},
+                        {empty, empty, empty},
+                        {empty, empty, empty}
+                },
+
+                // 4x4
+                {
+                        {empty, empty, empty, empty},
+                        {empty, empty, empty, empty},
+                        {empty, empty, empty, empty},
+                        {empty, empty, empty, empty}
+                },
+
+                // 5x5
+                {
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty}
+                },
+
+                // 6x6
+                {
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                },
+
+                //7x7
+                {
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                },
+
+                //8x8
+                {
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                },
+
+                //9x9
+                {
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                }
+        };
+    }
 }

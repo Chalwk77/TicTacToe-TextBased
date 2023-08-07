@@ -128,6 +128,11 @@ public class PrintBoard {
             }
         }
 
+        printCellIndicators(board);
+    }
+
+    private static void printCellIndicators(char[][] board) {
+
         StringBuilder available = new StringBuilder("Make your move:\n");
         int count = 0;
 
