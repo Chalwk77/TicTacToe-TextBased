@@ -6,13 +6,12 @@ import java.util.Map;
 public class Variables {
 
     public static String header = "";
+    public static String[] letters = {};
     public static char player1 = 'X';
     public static char player2 = 'O';
     public static char empty = '-';
-    public static Map<String, int[]> cell_indicators = new HashMap<>();
     public static char[][][] boards;
-
-    public static String[] letters = {};
+    public static Map<String, int[]> cell_indicators = new HashMap<>();
 
     public static int[][][] WINNING_COMBINATIONS = {
 
