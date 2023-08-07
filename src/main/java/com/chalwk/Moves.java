@@ -14,7 +14,8 @@ public class Moves {
         if (board[row][col] == '-') {
             return true;
         }
-        print("Invalid input");
+
+        print("Slot taken by [" + board[row][col] + "]. Please try again.");
 
         return false;
     }

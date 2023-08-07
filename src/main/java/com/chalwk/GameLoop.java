@@ -46,8 +46,7 @@ public class GameLoop {
 
         do {
 
-            // todo: this is wrong. Computer will always place diagonally,
-            // todo even if the move is not allowed.
+            // todo [fix] bug here
             int LEN = board.length;
             int index = rand.nextInt(LEN);
             computerMove = letters[index] + (index + 1);
