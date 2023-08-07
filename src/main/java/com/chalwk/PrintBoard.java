@@ -140,7 +140,7 @@ public class PrintBoard {
             count++;
             if (count % 10 == 0) {
                 available.append("\n");
-            } else  if (board[row][col] == empty) {
+            } else if (board[row][col] == empty) {
                 available.append(pos).append(", ");
             }
         }

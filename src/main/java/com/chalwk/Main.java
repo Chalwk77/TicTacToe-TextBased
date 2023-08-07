@@ -25,11 +25,15 @@
 
 package com.chalwk;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-import static com.chalwk.GetWinner.getWinner;
+import static com.chalwk.BoardPicker.pickABoard;
+import static com.chalwk.GameLoop.gameLoop;
+import static com.chalwk.PlayAgain.playAgain;
 import static com.chalwk.PrintBoard.printBoard;
+
 
 public class Main {
     public static String header = "";
@@ -114,7 +118,6 @@ public class Main {
                     {empty, empty, empty, empty, empty, empty, empty, empty, empty},
             }
     };
-
     static Map<String, int[]> map;
     static String[][] positions = {
             {"A", "B"},
@@ -128,7 +131,6 @@ public class Main {
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"},
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"}
     };
-
     static int[][][] WINNING_COMBINATIONS = {
 
             // 2x2:
@@ -240,160 +242,6 @@ public class Main {
         scanner.close();
     }
 
-    private static char[][] pickABoard(Scanner scanner) {
-
-        print("Pick a board size:");
-        print("1 - 2x2     2 - 3x3     3 - 4x4     4 - 5x5");
-        print("5 - 6x6     6 - 7x7     7 - 8x8     8 - 9x9");
-
-        char[][] board;
-        while (true) {
-
-            int userInput = scanner.nextInt();
-            if (userInput <= 0 || userInput > boards.length) {
-                continue;
-            }
-            board = boards[userInput - 1];
-
-            for (int i = 0; i < board.length; i++) {
-                String pos = positions[userInput - 1][i];
-                for (int j = 0; j < board.length; j++) {
-                    map.put(pos + (j + 1), new int[]{j, i});
-                }
-            }
-
-            break;
-        }
-        return board;
-    }
-
-    private static void gameLoop(char[][] board, Scanner scanner) {
-        while (true) {
-
-            playerTurn(board, scanner);
-            if (gameOver(board)) {
-                break;
-            }
-            printBoard(board, true);
-
-            computerTurn(board);
-            if (gameOver(board)) {
-                break;
-            }
-            printBoard(board, true);
-        }
-    }
-
-    private static void playAgain(Scanner scanner) {
-        while (true) {
-
-            print("Play again? (Y/N)");
-            if (!scanner.hasNextLine()) {
-                break;
-            }
-
-            String userInput = scanner.nextLine();
-            if (userInput.equalsIgnoreCase("Y")) {
-                main(null);
-            } else if (userInput.equalsIgnoreCase("N")) {
-                print("Thanks for playing!");
-                break;
-            } else {
-                print("Invalid input");
-            }
-        }
-    }
-
-    private static boolean gameOver(char[][] board) {
-
-        if (getWinner(board, player1)) {
-            showStatus(1);
-            return true;
-        } else if (getWinner(board, player2)) {
-            showStatus(2);
-            return true;
-        }
-
-        for (char[] chars : board) {
-            for (char aChar : chars) {
-                if (aChar == empty) {
-                    return false;
-                }
-            }
-        }
-        showStatus(3);
-
-        return false;
-    }
-
-    private static boolean moveAllowed(char[][] board, String input) {
-
-        for (Map.Entry<String, int[]> entry : map.entrySet()) {
-            String pos = entry.getKey();
-            if (input.equalsIgnoreCase(pos)) {
-                int[] rowCol = entry.getValue();
-                int row = rowCol[0];
-                int col = rowCol[1];
-                return board[row][col] == empty;
-            }
-        }
-
-        return false;
-    }
-
-    private static void computerTurn(char[][] board) {
-        Random rand = new Random();
-        String computerMove;
-        do {
-
-            int LEN = board.length;
-            switch (LEN) {
-                case 2 -> computerMove = positions[0][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 3 -> computerMove = positions[1][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 4 -> computerMove = positions[2][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 5 -> computerMove = positions[3][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 6 -> computerMove = positions[4][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 7 -> computerMove = positions[5][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 8 -> computerMove = positions[6][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 9 -> computerMove = positions[7][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                default -> throw new IllegalStateException("Unexpected value: " + LEN);
-            }
-
-        } while (!moveAllowed(board, computerMove));
-        header = "Computer chose " + computerMove;
-        placeMove(board, computerMove, player2);
-    }
-
-    private static void playerTurn(char[][] board, Scanner scanner) {
-
-        String userInput;
-        while (true) {
-            userInput = scanner.nextLine();
-            if (moveAllowed(board, userInput)) {
-                break;
-            } else {
-                print(userInput + " is not a valid move.");
-            }
-        }
-        placeMove(board, userInput, player1);
-    }
-
-    private static void placeMove(char[][] board, String input, char symbol) {
-
-        for (Map.Entry<String, int[]> entry : map.entrySet()) {
-            String pos = entry.getKey();
-            if (input.equalsIgnoreCase(pos)) {
-                int[] rowCol = entry.getValue();
-                int row = rowCol[0];
-                int col = rowCol[1];
-                board[row][col] = symbol;
-                break;
-            }
-        }
-
-        print("Invalid input");
-    }
-
     public static void print(String s) {
         System.out.println(s);
     }
@@ -402,9 +250,12 @@ public class Main {
         System.out.println("\n".repeat(50));
         switch (status) {
             case 0 -> System.out.println("""
+                    ________________________________________________
+                    Copyright (c) 2023, Tic Tac Toe, Jericho Crosby
                     ___    __     ___       __     ___  __   ___
                      |  | /  `     |   /\\  /  `     |  /  \\ |__
                      |  | \\__,     |  /~~\\ \\__,     |  \\__/ |___
+                    ________________________________________________
                     """);
             case 1 -> System.out.println("""
                          __

@@ -6,7 +6,8 @@ public class GetWinner {
 
     static boolean getWinner(char[][] board, char symbol) {
 
-        switch (board.length) {
+        int length = board.length;
+        switch (length) {
             case 2 -> {
                 for (int[] combination : WINNING_COMBINATIONS[0]) {
                     int x = combination[0];
@@ -143,7 +144,7 @@ public class GetWinner {
                     }
                 }
             }
-            default -> throw new IllegalStateException("Board size is not supported");
+            default -> throw new IllegalStateException("Board size not supported: (" + length + "x" + length + ")");
         }
 
         return false;
