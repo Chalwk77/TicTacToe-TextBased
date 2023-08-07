@@ -58,25 +58,10 @@ public class BoardPicker {
             for (int row = 0; row < board.length; row++) {
                 String letter = letters[row];
                 for (int col = 0; col < board.length; col++) {
+                    System.out.println(letter + (col + 1) + " [" + row + "-" + col + "]");
                     cell_indicators.put(letter + (col + 1), new int[]{row, col});
                 }
             }
-
-            for (Map.Entry<String, int[]> entry : cell_indicators.entrySet()) {
-                String key = entry.getKey();
-                int[] value = entry.getValue();
-                print(key + " " + Arrays.toString(value));
-            }
-
-//            String input = "A3";
-//            int[] cell = cell_indicators.get(input);
-//
-//            int row = cell[0];
-//            int col = cell[1];
-//
-//            System.out.println(Arrays.toString(cell) + " " + board[cell[0]][cell[1]]);
-//
-//            board[cell[0]][cell[1]] = 'X';
 
             break;
         }
