@@ -46,18 +46,7 @@ public class GameLoop {
 
             int LEN = board.length;
             int index = rand.nextInt(LEN);
-
-            switch (LEN) {
-                case 2 -> computerMove = letters[0][index] + (index + 1); // 2x2
-                case 3 -> computerMove = letters[1][index] + (index + 1); // 3x3
-                case 4 -> computerMove = letters[2][index] + (index + 1); // 4x4
-                case 5 -> computerMove = letters[3][index] + (index + 1); // 5x5
-                case 6 -> computerMove = letters[4][index] + (index + 1); // 6x6
-                case 7 -> computerMove = letters[5][index] + (index + 1); // 7x7
-                case 8 -> computerMove = letters[6][index] + (index + 1); // 8x8
-                case 9 -> computerMove = letters[7][index] + (index + 1); // 9x9
-                default -> throw new IllegalStateException("Board size not supported: (" + LEN + "x" + LEN + ")");
-            }
+            computerMove = letters[index] + (index + 1);
 
         } while (!moveAllowed(board, computerMove));
 

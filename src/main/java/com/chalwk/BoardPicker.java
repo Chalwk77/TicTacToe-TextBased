@@ -1,12 +1,12 @@
 package com.chalwk;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static com.chalwk.Main.print;
 import static com.chalwk.Variables.*;
 
 public class BoardPicker {
-
 
     /**
      * Board picker.
@@ -43,20 +43,19 @@ public class BoardPicker {
             // Set board size:
             board = boards[userInput - 1];
 
-            // for a future update:
-//            String[] alphabet = {
-//                    "A", "B", "C", "D",
-//                    "E", "F", "G", "H",
-//                    "I", "J", "K", "L",
-//                    "M", "N", "O", "P",
-//                    "Q", "R", "S", "T",
-//                    "U", "V", "W", "X",
-//                    "Y", "Z"
-//            };
+            letters = Arrays.copyOfRange(new String[]{
+                    "A", "B", "C", "D",
+                    "E", "F", "G", "H",
+                    "I", "J", "K", "L",
+                    "M", "N", "O", "P",
+                    "Q", "R", "S", "T",
+                    "U", "V", "W", "X",
+                    "Y", "Z"
+            }, 0, board.length);
 
             // Show cell indicators (1,2,3 etc. & A,B,C etc.):
             for (int i = 0; i < board.length; i++) {
-                String pos = letters[userInput - 1][i];
+                String pos = letters[i];
                 for (int j = 0; j < board.length; j++) {
                     cell_indicators.put(pos + (j + 1), new int[]{j, i});
                 }
