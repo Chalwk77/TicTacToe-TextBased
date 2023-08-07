@@ -7,6 +7,13 @@ import static com.chalwk.Variables.*;
 
 public class BoardPicker {
 
+
+    /**
+     * Board picker.
+     *
+     * @param scanner The scanner.
+     *                Gets the user input and returns the board to use.
+     */
     static char[][] pickABoard(Scanner scanner) {
 
         print("Pick a board size:");
@@ -19,20 +26,24 @@ public class BoardPicker {
 
         while (true) {
 
+            // Check if user input is an integer:
             if (!scanner.hasNextInt()) {
                 print("Invalid input, please try again.");
                 scanner.next();
                 continue;
             }
 
+            // Get user input:
             int userInput = scanner.nextInt();
             if (userInput <= 0 || userInput > boards.length) {
                 print("Invalid input, please try again.");
                 continue;
             }
 
+            // Set board size:
             board = boards[userInput - 1];
 
+            // Show cell indicators (1,2,3 etc. & A,B,C etc.):
             for (int i = 0; i < board.length; i++) {
                 String pos = positions[userInput - 1][i];
                 for (int j = 0; j < board.length; j++) {

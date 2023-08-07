@@ -4,6 +4,14 @@ import static com.chalwk.Variables.WINNING_COMBINATIONS;
 
 public class GetWinner {
 
+    /**
+     * Get winner.
+     *
+     * @param board  The current board.
+     * @param symbol The current player's symbol.
+     * @return True if the current player has won.
+     * Checks if the current player has won.
+     */
     static boolean getWinner(char[][] board, char symbol) {
 
         int length = board.length;
@@ -23,6 +31,7 @@ public class GetWinner {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
+
                     if (board[x / 3][x % 3] == symbol
                             && board[y / 3][y % 3] == symbol
                             && board[z / 3][z % 3] == symbol) {

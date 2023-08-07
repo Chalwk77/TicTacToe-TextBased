@@ -12,6 +12,13 @@ import static com.chalwk.Variables.*;
 
 public class GameLoop {
 
+    /**
+     * Player turn.
+     *
+     * @param board   The current board
+     * @param scanner The scanner
+     *                Gets the user input and checks if the move is allowed.
+     */
     private static void playerTurn(char[][] board, Scanner scanner) {
 
         String userInput = null;
@@ -26,6 +33,12 @@ public class GameLoop {
         placeMove(board, userInput, player1);
     }
 
+    /**
+     * Computer turn.
+     *
+     * @param board The current board
+     *              Gets the computers input and checks if the move is allowed.
+     */
     private static void computerTurn(char[][] board) {
         Random rand = new Random();
         String computerMove;
@@ -52,6 +65,13 @@ public class GameLoop {
         placeMove(board, computerMove, player2);
     }
 
+    /**
+     * Game over.
+     *
+     * @param board The current board.
+     * @return true,  If the game is over.
+     * Checks if the game is over / Shows the winner / Shows a draw.
+     */
     private static boolean gameOver(char[][] board) {
 
         if (getWinner(board, player1)) {
@@ -74,6 +94,14 @@ public class GameLoop {
         return false;
     }
 
+
+    /**
+     * Game over.
+     *
+     * @param board   The board
+     * @param scanner The scanner
+     *                The primary game loop.
+     */
     static void gameLoop(char[][] board, Scanner scanner) {
         while (true) {
 
