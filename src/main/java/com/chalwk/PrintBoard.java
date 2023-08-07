@@ -42,7 +42,6 @@ public class PrintBoard {
                 print("  |---+---|");
             }
         }
-        print("  |-------|");
     }
 
     private static void board2(char[][] b) {

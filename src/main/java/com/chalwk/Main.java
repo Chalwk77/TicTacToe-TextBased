@@ -60,6 +60,7 @@ public class Main {
             String userInput = scanner.nextLine();
             if (userInput.equalsIgnoreCase("Y")) {
                 main(null);
+                break;
             } else if (userInput.equalsIgnoreCase("N")) {
                 print("Thanks for playing!");
                 break;
