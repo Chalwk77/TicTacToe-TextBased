@@ -43,9 +43,20 @@ public class BoardPicker {
             // Set board size:
             board = boards[userInput - 1];
 
+            // for a future update:
+//            String[] alphabet = {
+//                    "A", "B", "C", "D",
+//                    "E", "F", "G", "H",
+//                    "I", "J", "K", "L",
+//                    "M", "N", "O", "P",
+//                    "Q", "R", "S", "T",
+//                    "U", "V", "W", "X",
+//                    "Y", "Z"
+//            };
+
             // Show cell indicators (1,2,3 etc. & A,B,C etc.):
             for (int i = 0; i < board.length; i++) {
-                String pos = positions[userInput - 1][i];
+                String pos = letters[userInput - 1][i];
                 for (int j = 0; j < board.length; j++) {
                     cell_indicators.put(pos + (j + 1), new int[]{j, i});
                 }

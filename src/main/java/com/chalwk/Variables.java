@@ -12,7 +12,7 @@ public class Variables {
     public static Map<String, int[]> cell_indicators = new HashMap<>();
     public static char[][][] boards;
 
-    public static String[][] positions = {
+    public static String[][] letters = {
             {"A", "B"},
             {"A", "B", "C"},
             {"A", "B", "C", "D"},
@@ -24,6 +24,7 @@ public class Variables {
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"},
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"}
     };
+
     public static int[][][] WINNING_COMBINATIONS = {
 
             // 2x2:
