@@ -1,31 +1,35 @@
 /*
 
 // COMING IN A FUTURE UPDATE:
-// Multi-dimensional tic tac toe game - you have to win each board to place your mark.
+// Multi-dimensional Tic Tac Toe game - Win 3 boards in a row, for example, boards 1, 5 and 9 to win the game.
 
- - | - | -      - | - | -      - | - | -
+ - | - | -      - | - | -       - | - | -
 ---+---+---    ---+---+---     ---+---+---
- - | X | -      - | - | -      - | - | -
+ - | X | -      - | - | -       - | - | -
 ---+---+---    ---+---+---     ---+---+---
- - | - | -      - | - | -      - | - | -
+ - | - | -      - | - | -       - | - | -
 
- - | - | -      - | - | -      - | - | -
+ - | - | -      - | - | -       - | - | -
 ---+---+---    ---+---+---     ---+---+---
- - | - | -      - | X | -      - | - | -
+ - | - | -      - | X | -       - | - | -
 ---+---+---    ---+---+---     ---+---+---
- - | - | -      - | - | -      - | - | -
+ - | - | -      - | - | -       - | - | -
 
- - | - | -      - | - | -      - | - | -
+ - | - | -      - | - | -       - | - | -
 ---+---+---    ---+---+---     ---+---+---
- - | - | -      - | - | -      - | X | -
+ - | - | -      - | - | -       - | X | -
 ---+---+---    ---+---+---     ---+---+---
- - | - | -      - | - | -      - | - | -
+ - | - | -      - | - | -       - | - | -
 
 */
 
 package com.chalwk;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static com.chalwk.GetWinner.getWinner;
+import static com.chalwk.PrintBoard.printBoard;
 
 public class Main {
     public static String header = "";
@@ -33,6 +37,12 @@ public class Main {
     static char player2 = 'O';
     static char empty = '-';
     static char[][][] boards = {
+
+            //2x2:
+            {
+                    {empty, empty},
+                    {empty, empty}
+            },
 
             // 3x3
             {
@@ -56,31 +66,147 @@ public class Main {
                     {empty, empty, empty, empty, empty},
                     {empty, empty, empty, empty, empty},
                     {empty, empty, empty, empty, empty}
+            },
+
+            // 6x6
+            {
+                    {empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty},
+            },
+
+            //7x7
+            {
+                    {empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty},
+            },
+
+            //8x8
+            {
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty},
+            },
+
+            //9x9
+            {
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
             }
     };
 
     static Map<String, int[]> map;
     static String[][] positions = {
+            {"A", "B"},
             {"A", "B", "C"},
             {"A", "B", "C", "D"},
-            {"A", "B", "C", "D", "E"}
+            {"A", "B", "C", "D", "E"},
+            {"A", "B", "C", "D", "E", "F"},
+            {"A", "B", "C", "D", "E", "F", "G"},
+            {"A", "B", "C", "D", "E", "F", "G", "H"},
+            {"A", "B", "C", "D", "E", "F", "G", "H", "I"},
+            {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"},
+            {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"}
     };
 
     static int[][][] WINNING_COMBINATIONS = {
+
+            // 2x2:
+            {{0, 1}, {2, 3}, // rows
+                    {0, 2}, {1, 3}, // columns
+                    {0, 3}, {1, 2} // diagonals
+            },
+
             // 3x3:
             {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // rows
                     {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // columns
-                    {0, 4, 8}, {2, 4, 6}}, // diagonals
+                    {0, 4, 8}, {2, 4, 6} // diagonals
+            },
 
             //4x4:
             {{0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}, {12, 13, 14, 15}, // rows
                     {0, 4, 8, 12}, {1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, // columns
-                    {0, 5, 10, 15}, {3, 6, 9, 12}}, // diagonals
+                    {0, 5, 10, 15}, {3, 6, 9, 12} // diagonals
+            },
 
             //5x5:
             {{0, 1, 2, 3, 4}, {5, 6, 7, 8, 9}, {10, 11, 12, 13, 14}, {15, 16, 17, 18, 19}, {20, 21, 22, 23, 24}, // rows
                     {0, 5, 10, 15, 20}, {1, 6, 11, 16, 21}, {2, 7, 12, 17, 22}, {3, 8, 13, 18, 23}, {4, 9, 14, 19, 24}, // columns
-                    {0, 6, 12, 18, 24}, {4, 8, 12, 16, 20}} // diagonals
+                    {0, 6, 12, 18, 24}, {4, 8, 12, 16, 20} // diagonals
+            },
+
+            //6x6:
+            {
+                    {0, 1, 2, 3, 4, 5}, {6, 7, 8, 9, 10, 11}, {12, 13, 14, 15, 16, 17},
+                    {18, 19, 20, 21, 22, 23}, {24, 25, 26, 27, 28, 29}, {30, 31, 32, 33, 34, 35}, // rows
+
+                    {0, 6, 12, 18, 24, 30}, {1, 7, 13, 19, 25, 31}, {2, 8, 14, 20, 26, 32},
+                    {3, 9, 15, 21, 27, 33}, {4, 10, 16, 22, 28, 34}, {5, 11, 17, 23, 29, 35}, // columns
+
+                    {0, 7, 14, 21, 28, 35}, {5, 10, 15, 20, 25, 30} // diagonals
+            },
+
+            // 7x7:
+            {
+                    {0, 1, 2, 3, 4, 5, 6}, {7, 8, 9, 10, 11, 12, 13}, {14, 15, 16, 17, 18, 19, 20},
+                    {21, 22, 23, 24, 25, 26, 27}, {28, 29, 30, 31, 32, 33, 34}, {35, 36, 37, 38, 39, 40, 41},
+                    {42, 43, 44, 45, 46, 47, 48}, // rows
+
+                    {0, 7, 14, 21, 28, 35, 42}, {1, 8, 15, 22, 29, 36, 43}, {2, 9, 16, 23, 30, 37, 44},
+                    {3, 10, 17, 24, 31, 38, 45}, {4, 11, 18, 25, 32, 39, 46}, {5, 12, 19, 26, 33, 40, 47},
+                    {6, 13, 20, 27, 34, 41, 48}, // columns
+
+                    {0, 8, 16, 24, 32, 40, 48}, {6, 12, 18, 24, 30, 36, 42} // diagonals
+            },
+
+            // 8x8:
+            {
+                    {0, 1, 2, 3, 4, 5, 6, 7}, {8, 9, 10, 11, 12, 13, 14, 15}, {16, 17, 18, 19, 20, 21, 22, 23},
+                    {24, 25, 26, 27, 28, 29, 30, 31}, {32, 33, 34, 35, 36, 37, 38, 39}, {40, 41, 42, 43, 44, 45, 46, 47},
+                    {48, 49, 50, 51, 52, 53, 54, 55}, {56, 57, 58, 59, 60, 61, 62, 63}, // rows
+
+                    {0, 8, 16, 24, 32, 40, 48, 56}, {1, 9, 17, 25, 33, 41, 49, 57}, {2, 10, 18, 26, 34, 42, 50, 58},
+                    {3, 11, 19, 27, 35, 43, 51, 59}, {4, 12, 20, 28, 36, 44, 52, 60}, {5, 13, 21, 29, 37, 45, 53, 61},
+                    {6, 14, 22, 30, 38, 46, 54, 62}, {7, 15, 23, 31, 39, 47, 55, 63}, // columns
+
+                    {0, 9, 18, 27, 36, 45, 54, 63}, {7, 14, 21, 28, 35, 42, 49, 56} // diagonals
+            },
+
+            // 9x9:
+            {
+                    {0, 1, 2, 3, 4, 5, 6, 7, 8}, {9, 10, 11, 12, 13, 14, 15, 16, 17}, {18, 19, 20, 21, 22, 23, 24, 25, 26},
+                    {27, 28, 29, 30, 31, 32, 33, 34, 35}, {36, 37, 38, 39, 40, 41, 42, 43, 44},
+                    {45, 46, 47, 48, 49, 50, 51, 52, 53}, {54, 55, 56, 57, 58, 59, 60, 61, 62},
+                    {63, 64, 65, 66, 67, 68, 69, 70, 71}, {72, 73, 74, 75, 76, 77, 78, 79, 80}, // rows
+
+                    {0, 9, 18, 27, 36, 45, 54, 63, 72}, {1, 10, 19, 28, 37, 46, 55, 64, 73},
+                    {2, 11, 20, 29, 38, 47, 56, 65, 74}, {3, 12, 21, 30, 39, 48, 57, 66, 75},
+                    {4, 13, 22, 31, 40, 49, 58, 67, 76}, {5, 14, 23, 32, 41, 50, 59, 68, 77},
+                    {6, 15, 24, 33, 42, 51, 60, 69, 78}, {7, 16, 25, 34, 43, 52, 61, 70, 79},
+                    {8, 17, 26, 35, 44, 53, 62, 71, 80}, // columns
+
+                    {0, 10, 20, 30, 40, 50, 60, 70, 80}, {8, 16, 24, 32, 40, 48, 56, 64, 72} // diagonals
+            }
     };
 
     public static void main(String[] args) {
@@ -104,7 +230,9 @@ public class Main {
 
     private static char[][] pickABoard(Scanner scanner) {
 
-        print("Pick a board size: 3x3, 4x4, 5x5 (1, 2, 3 respectively)");
+        String msg = "Pick a board size:\n1-2x2    2-3x3    3-4x4    4-5x5\n5-6x6    6-7x7    7-8x8    8-9x9";
+        print(msg);
+
         char[][] board;
         while (true) {
 
@@ -186,56 +314,6 @@ public class Main {
         return false;
     }
 
-    private static boolean getWinner(char[][] board, char symbol) {
-
-        switch (board.length) {
-            case 3 -> {
-                for (int[] combination : WINNING_COMBINATIONS[0]) {
-                    int x = combination[0];
-                    int y = combination[1];
-                    int z = combination[2];
-                    if (board[x / 3][x % 3] == symbol
-                            && board[y / 3][y % 3] == symbol
-                            && board[z / 3][z % 3] == symbol) {
-                        return true;
-                    }
-                }
-            }
-            case 4 -> {
-                for (int[] combination : WINNING_COMBINATIONS[1]) {
-                    int x = combination[0];
-                    int y = combination[1];
-                    int z = combination[2];
-                    int w = combination[3];
-                    if (board[x / 4][x % 4] == symbol
-                            && board[y / 4][y % 4] == symbol
-                            && board[z / 4][z % 4] == symbol
-                            && board[w / 4][w % 4] == symbol) {
-                        return true;
-                    }
-                }
-            }
-            case 5 -> {
-                for (int[] combination : WINNING_COMBINATIONS[2]) {
-                    int x = combination[0];
-                    int y = combination[1];
-                    int z = combination[2];
-                    int w = combination[3];
-                    int v = combination[4];
-                    if (board[x / 5][x % 5] == symbol
-                            && board[y / 5][y % 5] == symbol
-                            && board[z / 5][z % 5] == symbol
-                            && board[w / 5][w % 5] == symbol
-                            && board[v / 5][v % 5] == symbol) {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
     private static boolean moveAllowed(char[][] board, String input) {
 
         for (Map.Entry<String, int[]> entry : map.entrySet()) {
@@ -255,12 +333,17 @@ public class Main {
         Random rand = new Random();
         String computerMove;
         do {
-            
+
             int LEN = board.length;
             switch (LEN) {
-                case 3 -> computerMove = positions[0][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 4 -> computerMove = positions[1][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
-                case 5 -> computerMove = positions[2][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 2 -> computerMove = positions[0][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 3 -> computerMove = positions[1][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 4 -> computerMove = positions[2][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 5 -> computerMove = positions[3][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 6 -> computerMove = positions[4][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 7 -> computerMove = positions[5][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 8 -> computerMove = positions[6][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
+                case 9 -> computerMove = positions[7][rand.nextInt(LEN)] + (rand.nextInt(LEN) + 1);
                 default -> throw new IllegalStateException("Unexpected value: " + LEN);
             }
 
@@ -297,65 +380,6 @@ public class Main {
         }
 
         print("Invalid input");
-    }
-
-    private static void printBoard(char[][] board, boolean clear) {
-
-        if (clear) {
-            print("\n".repeat(50));
-        }
-
-        switch (board.length) {
-            case 3 -> {
-                print("  --A---B---C--");
-                print("1 | " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " |");
-                print("  |---+---+---|");
-                print("2 | " + board[1][0] + " | " + board[1][1] + " | " + board[1][2] + " |");
-                print("  |---+---+---|");
-                print("3 | " + board[2][0] + " | " + board[2][1] + " | " + board[2][2] + " |");
-                print("  |-----------|");
-            }
-            case 4 -> {
-                // print with ABC 1234
-                print("  --A---B---C---D--");
-                print("1 | " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " | " + board[0][3] + " |");
-                print("  |---+---+---+---|");
-                print("2 | " + board[1][0] + " | " + board[1][1] + " | " + board[1][2] + " | " + board[1][3] + " |");
-                print("  |---+---+---+---|");
-                print("3 | " + board[2][0] + " | " + board[2][1] + " | " + board[2][2] + " | " + board[2][3] + " |");
-                print("  |---+---+---+---|");
-                print("4 | " + board[3][0] + " | " + board[3][1] + " | " + board[3][2] + " | " + board[3][3] + " |");
-                print("  |---------------|");
-            }
-            case 5 -> {
-                print("  --A---B---C---D---E--");
-                print("1 | " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " | " + board[0][3] + " | " + board[0][4] + " |");
-                print("  |---+---+---+---+---|");
-                print("2 | " + board[1][0] + " | " + board[1][1] + " | " + board[1][2] + " | " + board[1][3] + " | " + board[1][4] + " |");
-                print("  |---+---+---+---+---|");
-                print("3 | " + board[2][0] + " | " + board[2][1] + " | " + board[2][2] + " | " + board[2][3] + " | " + board[2][4] + " |");
-                print("  |---+---+---+---+---|");
-                print("4 | " + board[3][0] + " | " + board[3][1] + " | " + board[3][2] + " | " + board[3][3] + " | " + board[3][4] + " |");
-                print("  |---+---+---+---+---|");
-                print("5 | " + board[4][0] + " | " + board[4][1] + " | " + board[4][2] + " | " + board[4][3] + " | " + board[4][4] + " |");
-                print("  |-------------------|");
-            }
-        }
-
-        StringBuilder available = new StringBuilder("Make your move: ");
-
-        for (Map.Entry<String, int[]> entry : map.entrySet()) {
-            String pos = entry.getKey();
-            int[] rowCol = entry.getValue();
-            int row = rowCol[0];
-            int col = rowCol[1];
-            if (board[row][col] == empty) {
-                available.append(pos).append(", ");
-            }
-        }
-
-        System.out.println(header);
-        System.out.println(available);
     }
 
     public static void print(String s) {
