@@ -16,13 +16,21 @@ public class BoardPicker {
         resetBoards();
 
         char[][] board;
+
         while (true) {
+
+            if (!scanner.hasNextInt()) {
+                print("Invalid input, please try again.");
+                scanner.next();
+                continue;
+            }
 
             int userInput = scanner.nextInt();
             if (userInput <= 0 || userInput > boards.length) {
                 print("Invalid input, please try again.");
                 continue;
             }
+
             board = boards[userInput - 1];
 
             for (int i = 0; i < board.length; i++) {
@@ -34,6 +42,7 @@ public class BoardPicker {
 
             break;
         }
+
         return board;
     }
 }
