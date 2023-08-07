@@ -30,19 +30,24 @@ public class GameLoop {
         Random rand = new Random();
         String computerMove;
         do {
+
+            // todo: [FIX] there is a bug here.
+
             int LEN = board.length;
             int index = rand.nextInt(LEN);
+
             switch (LEN) {
-                case 2 -> computerMove = positions[0][index] + (index + 1);
-                case 3 -> computerMove = positions[1][index] + (index + 1);
-                case 4 -> computerMove = positions[2][index] + (index + 1);
-                case 5 -> computerMove = positions[3][index] + (index + 1);
-                case 6 -> computerMove = positions[4][index] + (index + 1);
-                case 7 -> computerMove = positions[5][index] + (index + 1);
-                case 8 -> computerMove = positions[6][index] + (index + 1);
-                case 9 -> computerMove = positions[7][index] + (index + 1);
+                case 2 -> computerMove = positions[0][index] + (index + 1); // 2x2
+                case 3 -> computerMove = positions[1][index] + (index + 1); // 3x3
+                case 4 -> computerMove = positions[2][index] + (index + 1); // 4x4
+                case 5 -> computerMove = positions[3][index] + (index + 1); // 5x5
+                case 6 -> computerMove = positions[4][index] + (index + 1); // 6x6
+                case 7 -> computerMove = positions[5][index] + (index + 1); // 7x7
+                case 8 -> computerMove = positions[6][index] + (index + 1); // 8x8
+                case 9 -> computerMove = positions[7][index] + (index + 1); // 9x9
                 default -> throw new IllegalStateException("Board size not supported: (" + LEN + "x" + LEN + ")");
             }
+
 
         } while (!moveAllowed(board, computerMove));
         header = "Computer chose " + computerMove + "\n";
