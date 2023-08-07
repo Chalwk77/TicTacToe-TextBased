@@ -41,16 +41,15 @@ public class GameLoop {
      *              Gets the computers input and checks if the move is allowed.
      */
     private static void computerTurn(char[][] board) {
+
         Random rand = new Random();
         String computerMove;
 
+        // fixme: computer always chooses cells diagonally.
         do {
-
-            // todo: [fix] bug here (computer always chooses cells diagonally)
             int LEN = board.length;
             int index = rand.nextInt(LEN);
             computerMove = letters[index] + (index + 1);
-
         } while (!moveAllowed(board, computerMove));
 
         computer_chose = "Computer chose " + computerMove + "\n";
