@@ -11,15 +11,15 @@ public class PlayerTurn {
 
     static void playerTurn(char[][] board, Scanner scanner) {
 
-        String userInput;
-        while (true) {
-            userInput = scanner.nextLine();
-            if (moveAllowed(board, userInput)) {
+        String userInput = null;
+
+        do {
+            if (!scanner.hasNextLine()) {
                 break;
-            } else {
-                print(userInput + " is not a valid move.");
             }
-        }
+            userInput = scanner.nextLine();
+        } while (!moveAllowed(board, userInput));
+
         placeMove(board, userInput, player1);
     }
 }

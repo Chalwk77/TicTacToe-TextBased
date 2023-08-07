@@ -31,7 +31,6 @@ public class PrintBoard {
                 print("  |-----------|");
             }
             case 4 -> {
-                // print with ABC 1234
                 print("  --A---B---C---D--");
                 print("1 | " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " | " + board[0][3] + " |");
                 print("  |---+---+---+---|");
