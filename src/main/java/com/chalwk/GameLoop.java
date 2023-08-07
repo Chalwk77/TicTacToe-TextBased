@@ -46,14 +46,14 @@ public class GameLoop {
 
         do {
 
-            // todo [fix] bug here
+            // todo: [fix] bug here (computer always chooses cells diagonally)
             int LEN = board.length;
             int index = rand.nextInt(LEN);
             computerMove = letters[index] + (index + 1);
 
         } while (!moveAllowed(board, computerMove));
 
-        header = "Computer chose " + computerMove + "\n";
+        computer_chose = "Computer chose " + computerMove + "\n";
         placeMove(board, computerMove, player2);
     }
 

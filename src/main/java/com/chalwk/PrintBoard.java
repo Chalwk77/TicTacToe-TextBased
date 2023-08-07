@@ -4,7 +4,7 @@ import java.util.Map;
 
 import static com.chalwk.Main.print;
 import static com.chalwk.Variables.cell_indicators;
-import static com.chalwk.Variables.header;
+import static com.chalwk.Variables.computer_chose;
 
 public class PrintBoard {
 
@@ -154,7 +154,7 @@ public class PrintBoard {
             }
         }
 
-        System.out.println(header);
+        System.out.println(computer_chose);
         System.out.println(available);
     }
 }

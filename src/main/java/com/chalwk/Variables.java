@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Variables {
 
-    public static String header = "";
+    public static String computer_chose = "";
     public static String[] letters = {};
     public static char player1 = 'X';
     public static char player2 = 'O';
