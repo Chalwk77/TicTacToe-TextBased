@@ -9,4 +9,6 @@ Features:
 
 ## Requires [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) or higher.
 
+TODO [FIX]: Bug was introduced in the last push. Player symbols are not being displayed correctly.
+
 Copyright (c) 2023, Tic Tac Toe, Jericho Crosby <<jericho.crosby227@gmail.com>>
