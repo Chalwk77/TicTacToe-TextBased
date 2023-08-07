@@ -87,7 +87,7 @@ public class PrintBoard {
                 print("  |---------------------------|");
             }
             case 8 -> {
-                print("  --A---B---C---D---E---F---G--H--");
+                print("  --A---B---C---D---E---F---G---H--");
                 print("1 | " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " | " + board[0][3] + " | " + board[0][4] + " | " + board[0][5] + " | " + board[0][6] + " | " + board[0][7] + " |");
                 print("  |---+---+---+---+---+---+---+---|");
                 print("2 | " + board[1][0] + " | " + board[1][1] + " | " + board[1][2] + " | " + board[1][3] + " | " + board[1][4] + " | " + board[1][5] + " | " + board[1][6] + " | " + board[1][7] + " |");
@@ -106,7 +106,7 @@ public class PrintBoard {
                 print("  |---------------------------|");
             }
             case 9 -> {
-                print("  --A---B---C---D---E---F---G--H--I--");
+                print("  --A---B---C---D---E---F---G---H---I--");
                 print("1 | " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " | " + board[0][3] + " | " + board[0][4] + " | " + board[0][5] + " | " + board[0][6] + " | " + board[0][7] + " | " + board[0][8] + " |");
                 print("  |---+---+---+---+---+---+---+---+---|");
                 print("2 | " + board[1][0] + " | " + board[1][1] + " | " + board[1][2] + " | " + board[1][3] + " | " + board[1][4] + " | " + board[1][5] + " | " + board[1][6] + " | " + board[1][7] + " | " + board[1][8] + " |");

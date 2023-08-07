@@ -18,7 +18,7 @@ public class GetWinner {
                 }
             }
             case 3 -> {
-                for (int[] combination : WINNING_COMBINATIONS[0]) {
+                for (int[] combination : WINNING_COMBINATIONS[1]) {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
@@ -30,7 +30,7 @@ public class GetWinner {
                 }
             }
             case 4 -> {
-                for (int[] combination : WINNING_COMBINATIONS[1]) {
+                for (int[] combination : WINNING_COMBINATIONS[2]) {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
@@ -44,7 +44,7 @@ public class GetWinner {
                 }
             }
             case 5 -> {
-                for (int[] combination : WINNING_COMBINATIONS[2]) {
+                for (int[] combination : WINNING_COMBINATIONS[3]) {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
@@ -60,7 +60,7 @@ public class GetWinner {
                 }
             }
             case 6 -> {
-                for (int[] combination : WINNING_COMBINATIONS[3]) {
+                for (int[] combination : WINNING_COMBINATIONS[4]) {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
@@ -78,7 +78,7 @@ public class GetWinner {
                 }
             }
             case 7 -> {
-                for (int[] combination : WINNING_COMBINATIONS[4]) {
+                for (int[] combination : WINNING_COMBINATIONS[5]) {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
@@ -98,7 +98,7 @@ public class GetWinner {
                 }
             }
             case 8 -> {
-                for (int[] combination : WINNING_COMBINATIONS[5]) {
+                for (int[] combination : WINNING_COMBINATIONS[6]) {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
@@ -120,7 +120,7 @@ public class GetWinner {
                 }
             }
             case 9 -> {
-                for (int[] combination : WINNING_COMBINATIONS[6]) {
+                for (int[] combination : WINNING_COMBINATIONS[7]) {
                     int x = combination[0];
                     int y = combination[1];
                     int z = combination[2];
@@ -143,6 +143,7 @@ public class GetWinner {
                     }
                 }
             }
+            default -> throw new IllegalStateException("Board size is not supported");
         }
 
         return false;
