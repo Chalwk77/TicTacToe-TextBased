@@ -3,6 +3,7 @@ package com.chalwk;
 import java.util.Scanner;
 
 import static com.chalwk.Main.*;
+import static com.chalwk.Variables.*;
 
 public class BoardPicker {
     static char[][] pickABoard(Scanner scanner) {

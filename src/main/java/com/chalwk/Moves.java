@@ -3,6 +3,8 @@ package com.chalwk;
 import java.util.Map;
 
 import static com.chalwk.Main.*;
+import static com.chalwk.Variables.empty;
+import static com.chalwk.Variables.map;
 
 public class Moves {
 

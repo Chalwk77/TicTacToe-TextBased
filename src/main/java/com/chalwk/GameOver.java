@@ -2,6 +2,7 @@ package com.chalwk;
 
 import static com.chalwk.GetWinner.getWinner;
 import static com.chalwk.Main.*;
+import static com.chalwk.Variables.*;
 
 public class GameOver {
     static boolean gameOver(char[][] board) {

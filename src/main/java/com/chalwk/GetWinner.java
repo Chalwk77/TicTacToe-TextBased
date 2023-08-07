@@ -1,6 +1,6 @@
 package com.chalwk;
 
-import static com.chalwk.Main.WINNING_COMBINATIONS;
+import static com.chalwk.Variables.WINNING_COMBINATIONS;
 
 public class GetWinner {
 

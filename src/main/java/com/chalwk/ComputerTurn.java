@@ -5,6 +5,7 @@ import java.util.Random;
 import static com.chalwk.Main.*;
 import static com.chalwk.Moves.moveAllowed;
 import static com.chalwk.Moves.placeMove;
+import static com.chalwk.Variables.*;
 
 public class ComputerTurn {
 
