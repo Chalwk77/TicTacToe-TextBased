@@ -9,7 +9,6 @@ public class Variables {
     public static String[] letters = {};
     public static char player1 = 'X';
     public static char player2 = 'O';
-    public static char empty = '-';
     public static char[][][] boards;
     public static Map<String, int[]> cell_indicators = new HashMap<>();
 
@@ -111,78 +110,78 @@ public class Variables {
 
                 //2x2:
                 {
-                        {empty, empty},
-                        {empty, empty}
+                        {'-', '-'},
+                        {'-', '-'}
                 },
 
                 // 3x3
                 {
-                        {empty, empty, empty},
-                        {empty, empty, empty},
-                        {empty, empty, empty}
+                        {'-', '-', '-'},
+                        {'-', '-', '-'},
+                        {'-', '-', '-'}
                 },
 
                 // 4x4
                 {
-                        {empty, empty, empty, empty},
-                        {empty, empty, empty, empty},
-                        {empty, empty, empty, empty},
-                        {empty, empty, empty, empty}
+                        {'-', '-', '-', '-'},
+                        {'-', '-', '-', '-'},
+                        {'-', '-', '-', '-'},
+                        {'-', '-', '-', '-'}
                 },
 
                 // 5x5
                 {
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty}
+                        {'-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-'}
                 },
 
                 // 6x6
                 {
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty},
+                        {'-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-'},
                 },
 
                 //7x7
                 {
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty},
+                        {'-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-'},
                 },
 
                 //8x8
                 {
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-'},
                 },
 
                 //9x9
                 {
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
+                        {'-', '-', '-', '-', '-', '-', '-', '-', '-'},
                 }
         };
     }

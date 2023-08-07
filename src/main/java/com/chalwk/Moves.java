@@ -4,7 +4,7 @@ import java.util.Map;
 
 import static com.chalwk.Main.print;
 import static com.chalwk.Variables.cell_indicators;
-import static com.chalwk.Variables.empty;
+import static com.chalwk.Variables.header;
 
 public class Moves {
 
@@ -16,7 +16,7 @@ public class Moves {
                 int[] rowCol = entry.getValue();
                 int row = rowCol[0];
                 int col = rowCol[1];
-                if (board[row][col] == empty) {
+                if (board[row][col] == '-') {
                     return true;
                 }
             }
@@ -31,10 +31,12 @@ public class Moves {
         for (Map.Entry<String, int[]> entry : cell_indicators.entrySet()) {
             String pos = entry.getKey();
             if (input.equalsIgnoreCase(pos)) {
+
                 int[] rowCol = entry.getValue();
                 int row = rowCol[0];
                 int col = rowCol[1];
                 board[row][col] = symbol;
+
                 break;
             }
         }

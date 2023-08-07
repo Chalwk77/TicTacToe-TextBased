@@ -20,16 +20,15 @@ public class GameLoop {
      *                Gets the user input and checks if the move is allowed.
      */
     private static void playerTurn(char[][] board, Scanner scanner) {
-
         String userInput = null;
-
         do {
+
             if (!scanner.hasNextLine()) {
                 break;
             }
             userInput = scanner.nextLine();
-        } while (!moveAllowed(board, userInput));
 
+        } while (!moveAllowed(board, userInput));
         placeMove(board, userInput, player1);
     }
 
@@ -73,7 +72,7 @@ public class GameLoop {
 
         for (char[] chars : board) {
             for (char aChar : chars) {
-                if (aChar == empty) {
+                if (aChar == '-') {
                     return false;
                 }
             }

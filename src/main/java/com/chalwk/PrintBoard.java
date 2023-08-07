@@ -3,7 +3,8 @@ package com.chalwk;
 import java.util.Map;
 
 import static com.chalwk.Main.print;
-import static com.chalwk.Variables.*;
+import static com.chalwk.Variables.cell_indicators;
+import static com.chalwk.Variables.header;
 
 public class PrintBoard {
 
@@ -28,7 +29,7 @@ public class PrintBoard {
             case 7 -> board6(board);
             case 8 -> board7(board);
             case 9 -> board8(board);
-            default -> throw new IllegalStateException("Invalid board size: (" + len + "x" + len + ")");
+            default -> throw new IllegalStateException("Board size not supported: (" + len + "x" + len + ")");
         }
 
         printCellIndicators(board);
@@ -38,7 +39,7 @@ public class PrintBoard {
         print("  --A---B--");
         for (int i = 0; i < 2; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " |");
-            if (i != 1) {
+            if (i == b.length - 1) {
                 print("  |---+---|");
             }
         }
@@ -48,7 +49,7 @@ public class PrintBoard {
         print("  --A---B---C--");
         for (int i = 0; i < 3; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2] + " |");
-            if (i != 2) {
+            if (i == b.length - 1) {
                 print("  |---+---+---|");
             }
         }
@@ -60,7 +61,7 @@ public class PrintBoard {
             print((i + 1)
                     + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " |");
-            if (i != 3) {
+            if (i == b.length - 1) {
                 print("  |---+---+---+---|");
             }
         }
@@ -72,7 +73,7 @@ public class PrintBoard {
             print((i + 1)
                     + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " |");
-            if (i != 4) {
+            if (i == b.length - 1) {
                 print("  |---+---+---+---+---|");
             }
         }
@@ -84,7 +85,7 @@ public class PrintBoard {
             print((i + 1)
                     + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5] + " |");
-            if (i != 5) {
+            if (i == b.length - 1) {
                 print("  |---+---+---+---+---+---|");
             }
         }
@@ -97,7 +98,7 @@ public class PrintBoard {
                     + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
                     + " | " + b[i][6] + " |");
-            if (i != 6) {
+            if (i == b.length - 1) {
                 print("  |---+---+---+---+---+---+---|");
             }
         }
@@ -110,7 +111,7 @@ public class PrintBoard {
                     + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
                     + " | " + b[i][6] + " | " + b[i][7] + " |");
-            if (i != 7) {
+            if (i == b.length - 1) {
                 print("  |---+---+---+---+---+---+---+---|");
             }
         }
@@ -123,7 +124,7 @@ public class PrintBoard {
                     + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
                     + " | " + b[i][6] + " | " + b[i][7] + " | " + b[i][8] + " |");
-            if (i != 8) {
+            if (i == b.length - 1) {
                 print("  |---+---+---+---+---+---+---+---+---|");
             }
         }
@@ -148,7 +149,7 @@ public class PrintBoard {
             count++;
             if (count % 10 == 0) {
                 available.append("\n");
-            } else if (board[row][col] == empty) {
+            } else if (board[row][col] == '-') {
                 available.append(pos).append(", ");
             }
         }
