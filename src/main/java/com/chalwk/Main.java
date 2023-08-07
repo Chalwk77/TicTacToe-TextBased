@@ -29,7 +29,6 @@ import java.util.Scanner;
 
 import static com.chalwk.BoardPicker.pickABoard;
 import static com.chalwk.GameLoop.gameLoop;
-import static com.chalwk.PlayAgain.playAgain;
 import static com.chalwk.PrintBoard.printBoard;
 
 public class Main {
@@ -48,6 +47,26 @@ public class Main {
         playAgain(scanner);
 
         scanner.close();
+    }
+
+    private static void playAgain(Scanner scanner) {
+        while (true) {
+
+            print("Play again? (Y/N)");
+            if (!scanner.hasNextLine()) {
+                break;
+            }
+
+            String userInput = scanner.nextLine();
+            if (userInput.equalsIgnoreCase("Y")) {
+                main(null);
+            } else if (userInput.equalsIgnoreCase("N")) {
+                print("Thanks for playing!");
+                break;
+            } else {
+                print("Invalid input");
+            }
+        }
     }
 
     public static void print(String s) {
