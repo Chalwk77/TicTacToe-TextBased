@@ -7,37 +7,28 @@ import static com.chalwk.Variables.*;
 
 public class PrintBoard {
 
+    /***
+     *
+     * @param board The board to print
+     * @param clear Whether to clear the console before printing
+     */
     static void printBoard(char[][] board, boolean clear) {
 
         if (clear) {
             print("\n".repeat(50));
         }
 
-        switch (board.length) {
-            case 2 -> {
-                board1(board);
-            }
-            case 3 -> {
-                board2(board);
-            }
-            case 4 -> {
-                board3(board);
-            }
-            case 5 -> {
-                board4(board);
-            }
-            case 6 -> {
-                board5(board);
-            }
-            case 7 -> {
-                board6(board);
-            }
-            case 8 -> {
-                board7(board);
-            }
-            case 9 -> {
-                board8(board);
-            }
+        int len = board.length;
+        switch (len) {
+            case 2 -> board1(board);
+            case 3 -> board2(board);
+            case 4 -> board3(board);
+            case 5 -> board4(board);
+            case 6 -> board5(board);
+            case 7 -> board6(board);
+            case 8 -> board7(board);
+            case 9 -> board8(board);
+            default -> throw new IllegalStateException("Invalid board size: (" + len + "x" + len + ")");
         }
 
         printCellIndicators(board);
@@ -139,6 +130,10 @@ public class PrintBoard {
         }
     }
 
+    /***
+     * Prints cell indicators
+     * @param board The current board
+     */
     private static void printCellIndicators(char[][] board) {
 
         StringBuilder available = new StringBuilder("Make your move:\n");
