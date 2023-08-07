@@ -31,8 +31,6 @@ public class GameLoop {
         String computerMove;
         do {
 
-            // todo: [FIX] there is a bug here.
-
             int LEN = board.length;
             int index = rand.nextInt(LEN);
 
@@ -48,8 +46,8 @@ public class GameLoop {
                 default -> throw new IllegalStateException("Board size not supported: (" + LEN + "x" + LEN + ")");
             }
 
-
         } while (!moveAllowed(board, computerMove));
+
         header = "Computer chose " + computerMove + "\n";
         placeMove(board, computerMove, player2);
     }

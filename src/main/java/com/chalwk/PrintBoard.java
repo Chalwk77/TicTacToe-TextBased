@@ -138,6 +138,7 @@ public class PrintBoard {
 
         for (Map.Entry<String, int[]> entry : cell_indicators.entrySet()) {
             String pos = entry.getKey();
+
             int[] rowCol = entry.getValue();
             int row = rowCol[0];
             int col = rowCol[1];

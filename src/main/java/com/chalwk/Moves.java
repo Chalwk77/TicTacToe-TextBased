@@ -16,10 +16,13 @@ public class Moves {
                 int[] rowCol = entry.getValue();
                 int row = rowCol[0];
                 int col = rowCol[1];
-                return board[row][col] == empty;
+                if (board[row][col] == empty) {
+                    return true;
+                }
             }
         }
 
+        print("Invalid input");
         return false;
     }
 
