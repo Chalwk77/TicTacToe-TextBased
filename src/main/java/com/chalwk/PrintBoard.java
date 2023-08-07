@@ -2,7 +2,7 @@ package com.chalwk;
 
 import java.util.Map;
 
-import static com.chalwk.Main.*;
+import static com.chalwk.Main.print;
 import static com.chalwk.Variables.*;
 
 public class PrintBoard {
@@ -132,7 +132,7 @@ public class PrintBoard {
         StringBuilder available = new StringBuilder("Make your move:\n");
         int count = 0;
 
-        for (Map.Entry<String, int[]> entry : map.entrySet()) {
+        for (Map.Entry<String, int[]> entry : cell_indicators.entrySet()) {
             String pos = entry.getKey();
             int[] rowCol = entry.getValue();
             int row = rowCol[0];

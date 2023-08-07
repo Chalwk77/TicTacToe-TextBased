@@ -2,10 +2,11 @@ package com.chalwk;
 
 import java.util.Scanner;
 
-import static com.chalwk.Main.*;
+import static com.chalwk.Main.print;
 import static com.chalwk.Variables.*;
 
 public class BoardPicker {
+
     static char[][] pickABoard(Scanner scanner) {
 
         print("Pick a board size:");
@@ -17,6 +18,7 @@ public class BoardPicker {
 
             int userInput = scanner.nextInt();
             if (userInput <= 0 || userInput > boards.length) {
+                print("Invalid input, please try again.");
                 continue;
             }
             board = boards[userInput - 1];
@@ -24,7 +26,7 @@ public class BoardPicker {
             for (int i = 0; i < board.length; i++) {
                 String pos = positions[userInput - 1][i];
                 for (int j = 0; j < board.length; j++) {
-                    map.put(pos + (j + 1), new int[]{j, i});
+                    cell_indicators.put(pos + (j + 1), new int[]{j, i});
                 }
             }
 

@@ -8,7 +8,7 @@ public class Variables {
     public static char player1 = 'X';
     public static char player2 = 'O';
     public static char empty = '-';
-    public static Map<String, int[]> map;
+    public static Map<String, int[]> cell_indicators;
 
     public static String[][] positions = {
             {"A", "B"},

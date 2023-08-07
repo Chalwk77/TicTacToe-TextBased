@@ -1,7 +1,7 @@
 package com.chalwk;
 
 import static com.chalwk.GetWinner.getWinner;
-import static com.chalwk.Main.*;
+import static com.chalwk.Main.showStatus;
 import static com.chalwk.Variables.*;
 
 public class GameOver {

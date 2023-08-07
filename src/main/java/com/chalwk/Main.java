@@ -32,14 +32,14 @@ import static com.chalwk.BoardPicker.pickABoard;
 import static com.chalwk.GameLoop.gameLoop;
 import static com.chalwk.PlayAgain.playAgain;
 import static com.chalwk.PrintBoard.printBoard;
-import static com.chalwk.Variables.map;
+import static com.chalwk.Variables.cell_indicators;
 
 public class Main {
 
     public static void main(String[] args) {
 
         char[][] board;
-        map = new HashMap<>();
+        cell_indicators = new HashMap<>();
 
         Scanner scanner = new Scanner(System.in);
 

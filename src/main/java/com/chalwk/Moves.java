@@ -2,15 +2,15 @@ package com.chalwk;
 
 import java.util.Map;
 
-import static com.chalwk.Main.*;
+import static com.chalwk.Main.print;
+import static com.chalwk.Variables.cell_indicators;
 import static com.chalwk.Variables.empty;
-import static com.chalwk.Variables.map;
 
 public class Moves {
 
     static boolean moveAllowed(char[][] board, String input) {
 
-        for (Map.Entry<String, int[]> entry : map.entrySet()) {
+        for (Map.Entry<String, int[]> entry : cell_indicators.entrySet()) {
             String pos = entry.getKey();
             if (input.equalsIgnoreCase(pos)) {
                 int[] rowCol = entry.getValue();
@@ -25,7 +25,7 @@ public class Moves {
 
     static void placeMove(char[][] board, String input, char symbol) {
 
-        for (Map.Entry<String, int[]> entry : map.entrySet()) {
+        for (Map.Entry<String, int[]> entry : cell_indicators.entrySet()) {
             String pos = entry.getKey();
             if (input.equalsIgnoreCase(pos)) {
                 int[] rowCol = entry.getValue();

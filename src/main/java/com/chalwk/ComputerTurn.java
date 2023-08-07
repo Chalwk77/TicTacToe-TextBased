@@ -2,7 +2,6 @@ package com.chalwk;
 
 import java.util.Random;
 
-import static com.chalwk.Main.*;
 import static com.chalwk.Moves.moveAllowed;
 import static com.chalwk.Moves.placeMove;
 import static com.chalwk.Variables.*;
@@ -28,7 +27,7 @@ public class ComputerTurn {
             }
 
         } while (!moveAllowed(board, computerMove));
-        header = "Computer chose " + computerMove;
+        header = "Computer chose " + computerMove + "\n";
         placeMove(board, computerMove, player2);
     }
 }
