@@ -1,5 +1,6 @@
 package com.chalwk;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Variables {
@@ -8,7 +9,7 @@ public class Variables {
     public static char player1 = 'X';
     public static char player2 = 'O';
     public static char empty = '-';
-    public static Map<String, int[]> cell_indicators;
+    public static Map<String, int[]> cell_indicators = new HashMap<>();
 
     public static String[][] positions = {
             {"A", "B"},

@@ -25,21 +25,18 @@
 
 package com.chalwk;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 import static com.chalwk.BoardPicker.pickABoard;
 import static com.chalwk.GameLoop.gameLoop;
 import static com.chalwk.PlayAgain.playAgain;
 import static com.chalwk.PrintBoard.printBoard;
-import static com.chalwk.Variables.cell_indicators;
 
 public class Main {
 
     public static void main(String[] args) {
 
         char[][] board;
-        cell_indicators = new HashMap<>();
 
         Scanner scanner = new Scanner(System.in);
 
