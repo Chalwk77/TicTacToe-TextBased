@@ -10,6 +10,7 @@ public class Variables {
     public static char player2 = 'O';
     public static char empty = '-';
     public static Map<String, int[]> cell_indicators = new HashMap<>();
+    public static char[][][] boards;
 
     public static String[][] positions = {
             {"A", "B"},
@@ -23,85 +24,87 @@ public class Variables {
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"},
             {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"}
     };
+    public static void resetBoards(){
 
-    public static char[][][] boards = {
+        boards = new char[][][]{
 
-            //2x2:
-            {
-                    {empty, empty},
-                    {empty, empty}
-            },
+                //2x2:
+                {
+                        {empty, empty},
+                        {empty, empty}
+                },
 
-            // 3x3
-            {
-                    {empty, empty, empty},
-                    {empty, empty, empty},
-                    {empty, empty, empty}
-            },
+                // 3x3
+                {
+                        {empty, empty, empty},
+                        {empty, empty, empty},
+                        {empty, empty, empty}
+                },
 
-            // 4x4
-            {
-                    {empty, empty, empty, empty},
-                    {empty, empty, empty, empty},
-                    {empty, empty, empty, empty},
-                    {empty, empty, empty, empty}
-            },
+                // 4x4
+                {
+                        {empty, empty, empty, empty},
+                        {empty, empty, empty, empty},
+                        {empty, empty, empty, empty},
+                        {empty, empty, empty, empty}
+                },
 
-            // 5x5
-            {
-                    {empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty}
-            },
+                // 5x5
+                {
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty}
+                },
 
-            // 6x6
-            {
-                    {empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty},
-            },
+                // 6x6
+                {
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty},
+                },
 
-            //7x7
-            {
-                    {empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty},
-            },
+                //7x7
+                {
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty},
+                },
 
-            //8x8
-            {
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty},
-            },
+                //8x8
+                {
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty},
+                },
 
-            //9x9
-            {
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-                    {empty, empty, empty, empty, empty, empty, empty, empty, empty},
-            }
-    };
+                //9x9
+                {
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                        {empty, empty, empty, empty, empty, empty, empty, empty, empty},
+                }
+        };
+    }
 
     public static int[][][] WINNING_COMBINATIONS = {
 

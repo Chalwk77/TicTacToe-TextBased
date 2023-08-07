@@ -36,12 +36,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        char[][] board;
-
         Scanner scanner = new Scanner(System.in);
 
         showStatus(0);
-        board = pickABoard(scanner);
+        char[][] board = pickABoard(scanner);
 
         scanner = new Scanner(System.in);
 
