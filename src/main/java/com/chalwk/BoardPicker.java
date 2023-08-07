@@ -55,9 +55,9 @@ public class BoardPicker {
 
             // Show cell indicators (1,2,3 etc. & A,B,C etc.):
             for (int i = 0; i < board.length; i++) {
-                String pos = letters[i];
+                String letter = letters[i];
                 for (int j = 0; j < board.length; j++) {
-                    cell_indicators.put(pos + (j + 1), new int[]{j, i});
+                    cell_indicators.put(letter + (j + 1), new int[]{j, i});
                 }
             }
 
