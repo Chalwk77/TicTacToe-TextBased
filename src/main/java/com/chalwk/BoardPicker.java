@@ -61,6 +61,17 @@ public class BoardPicker {
                     cell_indicators.put(letter + (j + 1), new int[]{i, j});
                 }
             }
+
+            // A1 = [0, 0]      A2 = [0, 1]      A3 = [0, 2]
+
+            // TEST:
+            String input = "A3";
+            int[] cell = cell_indicators.get(input);
+
+            System.out.println(Arrays.toString(cell) + " " + board[cell[0]][cell[1]]);
+
+            board[cell[0]][cell[1]] = 'X';
+
             break;
         }
 
