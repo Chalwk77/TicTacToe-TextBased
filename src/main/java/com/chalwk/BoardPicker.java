@@ -1,7 +1,6 @@
 package com.chalwk;
 
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Scanner;
 
 import static com.chalwk.Main.print;
@@ -55,14 +54,11 @@ public class BoardPicker {
                     "Y", "Z"
             }, 0, board.length);
 
-             for (int row = 0; row < board.length; row++) {
-                 for (int col = 0; col < board.length; col++) {
-                     cell_indicators.put(letters[row] + (col + 1), new int[]{col, row});
-                 }
-             }
-
-             String input = "A3";
-
+            for (int row = 0; row < board.length; row++) {
+                for (int col = 0; col < board.length; col++) {
+                    cell_indicators.put(letters[row] + (col + 1), new int[]{col, row});
+                }
+            }
 
             break;
         }

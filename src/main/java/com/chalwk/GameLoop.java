@@ -29,6 +29,8 @@ public class GameLoop {
             userInput = scanner.nextLine();
 
         } while (!moveAllowed(board, userInput));
+
+        assert userInput != null;
         placeMove(board, userInput, player1);
     }
 
@@ -41,8 +43,11 @@ public class GameLoop {
     private static void computerTurn(char[][] board) {
         Random rand = new Random();
         String computerMove;
+
         do {
 
+            // todo: this is wrong. Computer will always place diagonally,
+            // todo even if the move is not allowed.
             int LEN = board.length;
             int index = rand.nextInt(LEN);
             computerMove = letters[index] + (index + 1);
