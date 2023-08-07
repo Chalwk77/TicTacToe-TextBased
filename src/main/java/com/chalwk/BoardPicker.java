@@ -61,6 +61,9 @@ public class BoardPicker {
                  }
              }
 
+             String input = "A3";
+
+
             break;
         }
 
