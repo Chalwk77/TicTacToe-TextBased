@@ -9,6 +9,4 @@ Features:
 
 ## Requires [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) or higher.
 
-TODO [FIX]: Intermittent infinite loop when player enters their selection.
-
 Copyright (c) 2023, Tic Tac Toe, Jericho Crosby <<jericho.crosby227@gmail.com>>
