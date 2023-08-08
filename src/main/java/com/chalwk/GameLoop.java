@@ -49,11 +49,10 @@ public class GameLoop {
         Random rand = new Random();
         String computerMove;
 
-        // fixme: computer always chooses cells diagonally.
         do {
-            int LEN = board.length;
-            int index = rand.nextInt(LEN);
-            computerMove = letters[index] + (index + 1);
+            int randRow = rand.nextInt(board.length);
+            int randCol = rand.nextInt(board.length);
+            computerMove = letters[randRow] + (randCol + 1);
         } while (!moveAllowed(board, computerMove));
 
         computer_chose = "Computer chose " + computerMove + "\n";
@@ -84,11 +83,11 @@ public class GameLoop {
                 }
             }
         }
+
         showStatus(3);
 
         return false;
     }
-
 
     /**
      * Game loop.
