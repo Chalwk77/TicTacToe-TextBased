@@ -1,28 +1,28 @@
 /*
 
 // COMING IN A FUTURE UPDATE:
-// Multi-dimensional Tic Tac Toe game - Win 3 boards in a row, for example, boards 1, 5 and 9 to win the game.
+// Win 3 boards in a row, for example, boards 1, 5 and 9 to win the game.
 
-     A   B   C      A   B   C       A   B   C
-  1  - | - | -      - | - | -       - | - | -
-    ---+---+---    ---+---+---     ---+---+---
-  2  - | X | -      - | - | -       - | - | -
-    ---+---+---    ---+---+---     ---+---+---
-  3  - | - | -      - | - | -       - | - | -
+      A   B   C       A   B   C       A   B   C
+  1 | - | - | - |   | - | - | - |   | - | - | - |
+    |---+---+---|   |---+---+---|   |---+---+---|
+  2 | - | - | - |   | - | - | - |   | - | - | - |
+    |---+---+---|   |---+---+---|   |---+---+---|
+  3 | - | - | - |   | - | - | - |   | - | - | - |
 
-     A   B   C      A   B   C       A   B   C
-  1  - | - | -      - | - | -       - | - | -
-    ---+---+---    ---+---+---     ---+---+---
-  2  - | X | -      - | - | -       - | - | -
-    ---+---+---    ---+---+---     ---+---+---
-  3  - | - | -      - | - | -       - | - | -
+      A   B   C       A   B   C       A   B   C
+  1 | - | - | - |   | - | - | - |   | - | - | - |
+    |---+---+---|   |---+---+---|   |---+---+---|
+  2 | - | - | - |   | - | - | - |   | - | - | - |
+    |---+---+---|   |---+---+---|   |---+---+---|
+  3 | - | - | - |   | - | - | - |   | - | - | - |
 
-     A   B   C      A   B   C       A   B   C
-  1  - | - | -      - | - | -       - | - | -
-    ---+---+---    ---+---+---     ---+---+---
-  2  - | X | -      - | - | -       - | - | -
-    ---+---+---    ---+---+---     ---+---+---
-  3  - | - | -      - | - | -       - | - | -
+      A   B   C       A   B   C       A   B   C
+  1 | - | - | - |   | - | - | - |   | - | - | - |
+    |---+---+---|   |---+---+---|   |---+---+---|
+  2 | - | - | - |   | - | - | - |   | - | - | - |
+    |---+---+---|   |---+---+---|   |---+---+---|
+  3 | - | - | - |   | - | - | - |   | - | - | - |
 
 */
 
@@ -36,6 +36,15 @@ import static com.chalwk.PrintBoard.printBoard;
 
 public class Main {
 
+    /***
+     * Main method - Entry point
+     * Starts the game.
+     * @see BoardPicker#pickABoard(Scanner)
+     * @see PrintBoard#printBoard(char[][], boolean)
+     * @see GameLoop#gameLoop(char[][], Scanner)
+     * @see #playAgain(Scanner)
+     * @param args The program arguments (unused)
+     */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
