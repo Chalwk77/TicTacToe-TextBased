@@ -2,6 +2,7 @@ package com.chalwk;
 
 import static com.chalwk.Main.print;
 import static com.chalwk.Variables.cell_indicators;
+import static com.chalwk.Variables.filler;
 
 public class Moves {
 
@@ -11,7 +12,7 @@ public class Moves {
         int row = cells[0];
         int col = cells[1];
 
-        if (board[row][col] == '-') {
+        if (board[row][col] == filler) {
             return true;
         }
 

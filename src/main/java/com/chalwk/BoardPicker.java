@@ -56,6 +56,7 @@ public class BoardPicker {
 
             for (int row = 0; row < board.length; row++) {
                 for (int col = 0; col < board.length; col++) {
+                    board[row][col] = filler;
                     cell_indicators.put(letters[row] + (col + 1), new int[]{col, row});
                 }
             }

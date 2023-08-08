@@ -75,7 +75,7 @@ public class GameLoop {
 
         for (char[] chars : board) {
             for (char aChar : chars) {
-                if (aChar == '-') {
+                if (aChar == filler) {
                     return false;
                 }
             }
