@@ -17,8 +17,8 @@ public class BoardPicker {
     static char[][] pickABoard(Scanner scanner) {
 
         print("Pick a board size:");
-        print("1 - 2x2     2 - 3x3     3 - 4x4     4 - 5x5");
-        print("5 - 6x6     6 - 7x7     7 - 8x8     8 - 9x9");
+        print("1 - 3x3     2 - 4x4     3 - 5x5     4 - 6x6");
+        print("5 - 7x7     6 - 8x8     7 - 9x9     8 - 10x10");
 
         resetBoards();
 

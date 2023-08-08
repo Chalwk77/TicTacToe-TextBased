@@ -15,6 +15,10 @@ public class Moves {
     static boolean moveAllowed(char[][] board, String input) {
 
         int[] cells = cell_indicators.get(input.toUpperCase());
+        if (cells == null) {
+            print("Invalid input. Please try again.");
+            return false;
+        }
         int row = cells[0];
         int col = cells[1];
 

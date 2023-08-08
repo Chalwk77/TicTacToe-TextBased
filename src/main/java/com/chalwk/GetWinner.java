@@ -16,47 +16,41 @@ public class GetWinner {
 
         int len = board.length;
         switch (len) {
-            case 2 -> {
+            case 3 -> {
                 return board1(board, symbol);
             }
-            case 3 -> {
+            case 4 -> {
                 return board2(board, symbol);
             }
-            case 4 -> {
+            case 5 -> {
                 return board3(board, symbol);
             }
-            case 5 -> {
+            case 6 -> {
                 return board4(board, symbol);
             }
-            case 6 -> {
+            case 7 -> {
                 return board5(board, symbol);
             }
-            case 7 -> {
+            case 8 -> {
                 return board6(board, symbol);
             }
-            case 8 -> {
+            case 9 -> {
                 return board7(board, symbol);
             }
-            case 9 -> {
+            case 10 -> {
                 return board8(board, symbol);
             }
             default -> throw new IllegalStateException("Board size not supported: (" + len + "x" + len + ")");
         }
     }
 
+    /***
+     *
+     * @param board 3x3
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
     private static boolean board1(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[0]) {
-            int x = combination[0];
-            int y = combination[1];
-            if (board[x / 2][x % 2] == symbol
-                    && board[y / 2][y % 2] == symbol) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean board2(char[][] board, char symbol) {
         for (int[] combination : WINNING_COMBINATIONS[1]) {
             int x = combination[0];
             int y = combination[1];
@@ -71,7 +65,13 @@ public class GetWinner {
         return false;
     }
 
-    private static boolean board3(char[][] board, char symbol) {
+    /***
+     *
+     * @param board 4x4
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
+    private static boolean board2(char[][] board, char symbol) {
         for (int[] combination : WINNING_COMBINATIONS[2]) {
             int x = combination[0];
             int y = combination[1];
@@ -87,7 +87,13 @@ public class GetWinner {
         return false;
     }
 
-    private static boolean board4(char[][] board, char symbol) {
+    /***
+     *
+     * @param board 5x5
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
+    private static boolean board3(char[][] board, char symbol) {
         for (int[] combination : WINNING_COMBINATIONS[3]) {
             int x = combination[0];
             int y = combination[1];
@@ -105,7 +111,13 @@ public class GetWinner {
         return false;
     }
 
-    private static boolean board5(char[][] board, char symbol) {
+    /***
+     *
+     * @param board 6x6
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
+    private static boolean board4(char[][] board, char symbol) {
         for (int[] combination : WINNING_COMBINATIONS[4]) {
             int x = combination[0];
             int y = combination[1];
@@ -125,7 +137,13 @@ public class GetWinner {
         return false;
     }
 
-    private static boolean board6(char[][] board, char symbol) {
+    /***
+     *
+     * @param board 7x7
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
+    private static boolean board5(char[][] board, char symbol) {
         for (int[] combination : WINNING_COMBINATIONS[5]) {
             int x = combination[0];
             int y = combination[1];
@@ -147,7 +165,13 @@ public class GetWinner {
         return false;
     }
 
-    private static boolean board7(char[][] board, char symbol) {
+    /***
+     *
+     * @param board 8x8
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
+    private static boolean board6(char[][] board, char symbol) {
         for (int[] combination : WINNING_COMBINATIONS[6]) {
             int x = combination[0];
             int y = combination[1];
@@ -171,7 +195,13 @@ public class GetWinner {
         return false;
     }
 
-    private static boolean board8(char[][] board, char symbol) {
+    /***
+     *
+     * @param board 9x9
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
+    private static boolean board7(char[][] board, char symbol) {
         for (int[] combination : WINNING_COMBINATIONS[7]) {
             int x = combination[0];
             int y = combination[1];
@@ -191,6 +221,40 @@ public class GetWinner {
                     && board[t / 9][t % 9] == symbol
                     && board[s / 9][s % 9] == symbol
                     && board[r / 9][r % 9] == symbol) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /***
+     *
+     * @param board 10x10
+     * @param symbol X or O
+     * @return true if there is a winning combination
+     */
+    private static boolean board8(char[][] board, char symbol) {
+        for (int[] combination : WINNING_COMBINATIONS[8]) {
+            int x = combination[0];
+            int y = combination[1];
+            int z = combination[2];
+            int w = combination[3];
+            int v = combination[4];
+            int u = combination[5];
+            int t = combination[6];
+            int s = combination[7];
+            int r = combination[8];
+            int q = combination[9];
+            if (board[x / 10][x % 10] == symbol
+                    && board[y / 10][y % 10] == symbol
+                    && board[z / 10][z % 10] == symbol
+                    && board[w / 10][w % 10] == symbol
+                    && board[v / 10][v % 10] == symbol
+                    && board[u / 10][u % 10] == symbol
+                    && board[t / 10][t % 10] == symbol
+                    && board[s / 10][s % 10] == symbol
+                    && board[r / 10][r % 10] == symbol
+                    && board[q / 10][q % 10] == symbol) {
                 return true;
             }
         }

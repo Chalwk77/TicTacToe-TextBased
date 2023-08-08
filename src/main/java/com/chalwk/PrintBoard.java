@@ -22,29 +22,24 @@ public class PrintBoard {
         printLetters(board);
         int len = board.length;
         switch (len) {
-            case 2 -> board1(board);
-            case 3 -> board2(board);
-            case 4 -> board3(board);
-            case 5 -> board4(board);
-            case 6 -> board5(board);
-            case 7 -> board6(board);
-            case 8 -> board7(board);
-            case 9 -> board8(board);
+            case 3 -> board1(board);
+            case 4 -> board2(board);
+            case 5 -> board3(board);
+            case 6 -> board4(board);
+            case 7 -> board5(board);
+            case 8 -> board6(board);
+            case 9 -> board7(board);
+            case 10 -> board8(board);
             default -> throw new IllegalStateException("Board size not supported: (" + len + "x" + len + ")");
         }
         printCellIndicators(board);
     }
 
+    /***
+     * Board printer for 3x3.
+     * @param b The board to print
+     */
     private static void board1(char[][] b) {
-        for (int i = 0; i < 2; i++) {
-            print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " |");
-            if (i != 1) {
-                print("  |---+---|");
-            }
-        }
-    }
-
-    private static void board2(char[][] b) {
         for (int i = 0; i < 3; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2] + " |");
             if (i != 2) {
@@ -53,7 +48,11 @@ public class PrintBoard {
         }
     }
 
-    private static void board3(char[][] b) {
+    /***
+     * Board printer for 4x4.
+     * @param b The board to print
+     */
+    private static void board2(char[][] b) {
         for (int i = 0; i < 4; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " |");
@@ -63,7 +62,11 @@ public class PrintBoard {
         }
     }
 
-    private static void board4(char[][] b) {
+    /***
+     * Board printer for 5x5.
+     * @param b The board to print
+     */
+    private static void board3(char[][] b) {
         for (int i = 0; i < 5; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " |");
@@ -73,7 +76,11 @@ public class PrintBoard {
         }
     }
 
-    private static void board5(char[][] b) {
+    /***
+     * Board printer for 6x6.
+     * @param b The board to print
+     */
+    private static void board4(char[][] b) {
         for (int i = 0; i < 6; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5] + " |");
@@ -83,7 +90,11 @@ public class PrintBoard {
         }
     }
 
-    private static void board6(char[][] b) {
+    /***
+     * Board printer for 7x7.
+     * @param b The board to print
+     */
+    private static void board5(char[][] b) {
         for (int i = 0; i < 7; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
@@ -94,7 +105,11 @@ public class PrintBoard {
         }
     }
 
-    private static void board7(char[][] b) {
+    /***
+     * Board printer for 8x8.
+     * @param b The board to print
+     */
+    private static void board6(char[][] b) {
         for (int i = 0; i < 8; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
@@ -105,13 +120,33 @@ public class PrintBoard {
         }
     }
 
-    private static void board8(char[][] b) {
+    /***
+     * Board printer for 9x9.
+     * @param b The board to print
+     */
+    private static void board7(char[][] b) {
         for (int i = 0; i < 9; i++) {
             print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
                     + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
                     + " | " + b[i][6] + " | " + b[i][7] + " | " + b[i][8] + " |");
             if (i != 8) {
                 print("  |---+---+---+---+---+---+---+---+---|");
+            }
+        }
+    }
+
+    /***
+     * Board printer for 10x10.
+     * @param b The board to print
+     */
+    private static void board8(char[][] b) {
+        for (int i = 0; i < 10; i++) {
+            print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
+                    + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
+                    + " | " + b[i][6] + " | " + b[i][7] + " | " + b[i][8]
+                    + " | " + b[i][9] + " |");
+            if (i != 9) {
+                print("  |---+---+---+---+---+---+---+---+---+---|");
             }
         }
     }
