@@ -52,6 +52,14 @@ public class Main {
         scanner.close();
     }
 
+    /***
+     * Play again?
+     * @param scanner The scanner
+     *                Asks the user if they want to play again.
+     *                If yes, restarts the game.
+     *                If no, exits the game.
+     *                If invalid input, asks again.
+     */
     private static void playAgain(Scanner scanner) {
         while (true) {
 
@@ -73,10 +81,19 @@ public class Main {
         }
     }
 
+    /***
+     * Prints a string
+     * @param s The string to print
+     */
     public static void print(String s) {
         System.out.println(s);
     }
 
+    /***
+     * Status screen.
+     * @param status The status to print (0 = title screen, 1 = win, 2 = lose, 3 = draw)
+     *               Prints the status.
+     */
     public static void showStatus(int status) {
         System.out.println("\n".repeat(50));
         switch (status) {

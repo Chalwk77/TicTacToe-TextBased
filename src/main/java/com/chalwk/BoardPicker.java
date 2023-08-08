@@ -11,8 +11,8 @@ public class BoardPicker {
     /**
      * Board picker.
      *
-     * @param scanner The scanner.
-     *                Gets the user input and returns the board to use.
+     * @param scanner The scanner
+     *                Gets the user input from the scanner and sets the board to use.
      */
     static char[][] pickABoard(Scanner scanner) {
 
@@ -26,24 +26,21 @@ public class BoardPicker {
 
         while (true) {
 
-            // Check if user input is an integer:
             if (!scanner.hasNextInt()) {
                 print("Invalid input, please try again.");
                 scanner.next();
                 continue;
             }
 
-            // Get user input:
             int userInput = scanner.nextInt();
             if (userInput <= 0 || userInput > boards.length) {
                 print("Invalid input, please try again.");
                 continue;
             }
 
-            // Set board size:
+            // Set the board to use:
             board = boards[userInput - 1];
 
-            // Set cell indicators:
             letters = Arrays.copyOfRange(new String[]{
                     "A", "B", "C", "D",
                     "E", "F", "G", "H",
@@ -54,6 +51,7 @@ public class BoardPicker {
                     "Y", "Z"
             }, 0, board.length);
 
+            // Set the cell indicators (e.g. A1, B2, C3, etc.):
             for (int row = 0; row < board.length; row++) {
                 for (int col = 0; col < board.length; col++) {
                     board[row][col] = filler;

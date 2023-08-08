@@ -9,7 +9,7 @@ public class GetWinner {
      *
      * @param board  The current board.
      * @param symbol The current player's symbol.
-     * @return True if the current player has won.
+     * @return True  If the current player has won.
      * Checks if the current player has won.
      */
     static boolean getWinner(char[][] board, char symbol) {

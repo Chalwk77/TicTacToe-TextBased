@@ -17,7 +17,9 @@ public class GameLoop {
      *
      * @param board   The current board
      * @param scanner The scanner
-     *                Gets the user input and checks if the move is allowed.
+     *                Gets the user input from the scanner and checks if the move is allowed.
+     *                If the move is allowed, the move is placed.
+     *                If the move is not allowed, the user is prompted to try again.
      */
     private static void playerTurn(char[][] board, Scanner scanner) {
         String userInput = null;
@@ -38,7 +40,9 @@ public class GameLoop {
      * Computer turn.
      *
      * @param board The current board
-     *              Gets the computers input and checks if the move is allowed.
+     *              The computer chooses a random cell and checks if the move is allowed.
+     *              If the move is allowed, the move is placed.
+     *              If the move is not allowed, the computer chooses another random cell and checks if the move is allowed.
      */
     private static void computerTurn(char[][] board) {
 
@@ -60,8 +64,8 @@ public class GameLoop {
      * Game over.
      *
      * @param board The current board.
-     * @return true,  If the game is over.
-     * Checks if the game is over / Shows the winner / Shows a draw.
+     * @return true     If the game is over.
+     * Checks if the game should end (displays the winner or a draw).
      */
     private static boolean gameOver(char[][] board) {
 
@@ -87,9 +91,9 @@ public class GameLoop {
 
 
     /**
-     * Game over.
+     * Game loop.
      *
-     * @param board   The board
+     * @param board   The current board
      * @param scanner The scanner
      *                The primary game loop.
      */

@@ -13,6 +13,16 @@ public class Variables {
     public static char[][][] boards;
     public static Map<String, int[]> cell_indicators = new HashMap<>();
 
+    /***
+     * The winning combinations for each board size.
+     * The first index is the board size.
+     * The second index is the winning combination.
+     * The third index is the cells in the winning combination.
+     * For example, the winning combination for a 3x3 board is:
+     * {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // rows
+     * {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // columns
+     * {0, 4, 8}, {2, 4, 6} // diagonals}
+     */
     public static int[][][] WINNING_COMBINATIONS = {
 
             // 2x2:
@@ -105,6 +115,10 @@ public class Variables {
             }
     };
 
+    /***
+     * Set boards to their initial state.
+     * This method is called when the game is started or reset.
+     */
     public static void resetBoards() {
 
         boards = new char[][][]{

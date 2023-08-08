@@ -8,6 +8,7 @@ import static com.chalwk.Variables.*;
 public class PrintBoard {
 
     /***
+     * Board printer.
      *
      * @param board The board to print
      * @param clear Whether to clear the console before printing
@@ -116,6 +117,7 @@ public class PrintBoard {
     }
 
     /***
+     * Letter to number conversion, printer.
      * Prints the letters on the top of the board.
      * @param board The current board
      */
