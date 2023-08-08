@@ -115,6 +115,10 @@ public class PrintBoard {
         }
     }
 
+    /***
+     * Prints the letters on the top of the board.
+     * @param board The current board
+     */
     public static void printLetters(char[][] board) {
         StringBuilder chars = new StringBuilder("    ");
         for (int i = 0; i < board.length; i++) {
@@ -124,7 +128,7 @@ public class PrintBoard {
     }
 
     /***
-     * Prints cell indicators
+     * Prints cell numbers on the left side of the board.
      * @param board The current board
      */
     private static void printCellIndicators(char[][] board) {
