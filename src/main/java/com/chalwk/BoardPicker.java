@@ -18,7 +18,7 @@ public class BoardPicker {
 
         print("Pick a board size:");
         print("1 - 3x3     2 - 4x4     3 - 5x5     4 - 6x6");
-        print("5 - 7x7     6 - 8x8     7 - 9x9     8 - 10x10");
+        print("5 - 7x7     6 - 8x8     7 - 9x9");
 
         resetBoards();
 

@@ -37,9 +37,6 @@ public class GetWinner {
             case 9 -> {
                 return board7(board, symbol);
             }
-            case 10 -> {
-                return board8(board, symbol);
-            }
             default -> throw new IllegalStateException("Board size not supported: (" + len + "x" + len + ")");
         }
     }
@@ -221,40 +218,6 @@ public class GetWinner {
                     && board[t / 9][t % 9] == symbol
                     && board[s / 9][s % 9] == symbol
                     && board[r / 9][r % 9] == symbol) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /***
-     *
-     * @param board 10x10
-     * @param symbol X or O
-     * @return true if there is a winning combination
-     */
-    private static boolean board8(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[8]) {
-            int x = combination[0];
-            int y = combination[1];
-            int z = combination[2];
-            int w = combination[3];
-            int v = combination[4];
-            int u = combination[5];
-            int t = combination[6];
-            int s = combination[7];
-            int r = combination[8];
-            int q = combination[9];
-            if (board[x / 10][x % 10] == symbol
-                    && board[y / 10][y % 10] == symbol
-                    && board[z / 10][z % 10] == symbol
-                    && board[w / 10][w % 10] == symbol
-                    && board[v / 10][v % 10] == symbol
-                    && board[u / 10][u % 10] == symbol
-                    && board[t / 10][t % 10] == symbol
-                    && board[s / 10][s % 10] == symbol
-                    && board[r / 10][r % 10] == symbol
-                    && board[q / 10][q % 10] == symbol) {
                 return true;
             }
         }

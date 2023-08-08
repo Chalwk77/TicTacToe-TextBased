@@ -29,7 +29,6 @@ public class PrintBoard {
             case 7 -> board5(board);
             case 8 -> board6(board);
             case 9 -> board7(board);
-            case 10 -> board8(board);
             default -> throw new IllegalStateException("Board size not supported: (" + len + "x" + len + ")");
         }
         printCellIndicators(board);
@@ -131,22 +130,6 @@ public class PrintBoard {
                     + " | " + b[i][6] + " | " + b[i][7] + " | " + b[i][8] + " |");
             if (i != 8) {
                 print("  |---+---+---+---+---+---+---+---+---|");
-            }
-        }
-    }
-
-    /***
-     * Board printer for 10x10.
-     * @param b The board to print
-     */
-    private static void board8(char[][] b) {
-        for (int i = 0; i < 10; i++) {
-            print((i + 1) + " | " + b[i][0] + " | " + b[i][1] + " | " + b[i][2]
-                    + " | " + b[i][3] + " | " + b[i][4] + " | " + b[i][5]
-                    + " | " + b[i][6] + " | " + b[i][7] + " | " + b[i][8]
-                    + " | " + b[i][9] + " |");
-            if (i != 9) {
-                print("  |---+---+---+---+---+---+---+---+---+---|");
             }
         }
     }
