@@ -47,6 +47,8 @@ public class GameLoop {
     private static void computerTurn(char[][] board) {
 
         Random rand = new Random();
+        rand.setSeed(System.currentTimeMillis());
+
         String computerMove;
 
         do {
@@ -68,23 +70,25 @@ public class GameLoop {
      */
     private static boolean gameOver(char[][] board) {
 
-        if (getWinner(board, player1)) {
+        int count = 0;
+        for (char[] chars : board) {
+            for (char aChar : chars) {
+                if (aChar != filler) {
+                    count++;
+                }
+            }
+        }
+
+        if (count == board.length * board.length) {
+            showStatus(3);
+            return true;
+        } if (getWinner(board, player1)) {
             showStatus(1);
             return true;
         } else if (getWinner(board, player2)) {
             showStatus(2);
             return true;
         }
-
-        for (char[] chars : board) {
-            for (char aChar : chars) {
-                if (aChar == filler) {
-                    return false;
-                }
-            }
-        }
-
-        showStatus(3);
 
         return false;
     }

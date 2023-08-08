@@ -48,11 +48,10 @@ public class GetWinner {
      * @return true if there is a winning combination
      */
     private static boolean board1(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[1]) {
+        for (int[] combination : WINNING_COMBINATIONS[0]) {
             int x = combination[0];
             int y = combination[1];
             int z = combination[2];
-
             if (board[x / 3][x % 3] == symbol
                     && board[y / 3][y % 3] == symbol
                     && board[z / 3][z % 3] == symbol) {
@@ -69,7 +68,7 @@ public class GetWinner {
      * @return true if there is a winning combination
      */
     private static boolean board2(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[2]) {
+        for (int[] combination : WINNING_COMBINATIONS[1]) {
             int x = combination[0];
             int y = combination[1];
             int z = combination[2];
@@ -91,7 +90,7 @@ public class GetWinner {
      * @return true if there is a winning combination
      */
     private static boolean board3(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[3]) {
+        for (int[] combination : WINNING_COMBINATIONS[2]) {
             int x = combination[0];
             int y = combination[1];
             int z = combination[2];
@@ -115,7 +114,7 @@ public class GetWinner {
      * @return true if there is a winning combination
      */
     private static boolean board4(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[4]) {
+        for (int[] combination : WINNING_COMBINATIONS[3]) {
             int x = combination[0];
             int y = combination[1];
             int z = combination[2];
@@ -141,7 +140,7 @@ public class GetWinner {
      * @return true if there is a winning combination
      */
     private static boolean board5(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[5]) {
+        for (int[] combination : WINNING_COMBINATIONS[4]) {
             int x = combination[0];
             int y = combination[1];
             int z = combination[2];
@@ -169,7 +168,7 @@ public class GetWinner {
      * @return true if there is a winning combination
      */
     private static boolean board6(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[6]) {
+        for (int[] combination : WINNING_COMBINATIONS[5]) {
             int x = combination[0];
             int y = combination[1];
             int z = combination[2];
@@ -199,7 +198,7 @@ public class GetWinner {
      * @return true if there is a winning combination
      */
     private static boolean board7(char[][] board, char symbol) {
-        for (int[] combination : WINNING_COMBINATIONS[7]) {
+        for (int[] combination : WINNING_COMBINATIONS[6]) {
             int x = combination[0];
             int y = combination[1];
             int z = combination[2];
